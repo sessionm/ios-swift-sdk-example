@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8311E0691944FE9A006DFFC9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E0681944FE9A006DFFC9 /* Player.swift */; };
+		8311E06B1944FFFC006DFFC9 /* ShipWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E06A1944FFFC006DFFC9 /* ShipWeapon.swift */; };
+		8311E06D19450D2D006DFFC9 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E06C19450D2D006DFFC9 /* Projectile.swift */; };
+		8311E06F19452B66006DFFC9 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E06E19452B66006DFFC9 /* Background.swift */; };
+		8311E07119453C23006DFFC9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E07019453C23006DFFC9 /* Helpers.swift */; };
 		832767B81944DD8D0028F888 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832767B71944DD8D0028F888 /* AppDelegate.swift */; };
 		832767BA1944DD8D0028F888 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 832767B91944DD8D0028F888 /* GameScene.sks */; };
 		832767BC1944DD8D0028F888 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832767BB1944DD8D0028F888 /* GameScene.swift */; };
@@ -27,6 +32,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8311E0681944FE9A006DFFC9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		8311E06A1944FFFC006DFFC9 /* ShipWeapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipWeapon.swift; sourceTree = "<group>"; };
+		8311E06C19450D2D006DFFC9 /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
+		8311E06E19452B66006DFFC9 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		8311E07019453C23006DFFC9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		832767B21944DD8D0028F888 /* SwiftSKTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSKTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		832767B61944DD8D0028F888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		832767B71944DD8D0028F888 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +96,11 @@
 				832767BF1944DD8D0028F888 /* Main.storyboard */,
 				832767C21944DD8D0028F888 /* Images.xcassets */,
 				832767B51944DD8D0028F888 /* Supporting Files */,
+				8311E0681944FE9A006DFFC9 /* Player.swift */,
+				8311E06C19450D2D006DFFC9 /* Projectile.swift */,
+				8311E06A1944FFFC006DFFC9 /* ShipWeapon.swift */,
+				8311E06E19452B66006DFFC9 /* Background.swift */,
+				8311E07019453C23006DFFC9 /* Helpers.swift */,
 			);
 			path = SwiftSKTest;
 			sourceTree = "<group>";
@@ -164,6 +179,7 @@
 				TargetAttributes = {
 					832767B11944DD8D0028F888 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = TVQJF33UHP;
 					};
 					832767C71944DD8D0028F888 = {
 						CreatedOnToolsVersion = 6.0;
@@ -215,9 +231,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8311E06D19450D2D006DFFC9 /* Projectile.swift in Sources */,
+				8311E06F19452B66006DFFC9 /* Background.swift in Sources */,
+				8311E0691944FE9A006DFFC9 /* Player.swift in Sources */,
+				8311E07119453C23006DFFC9 /* Helpers.swift in Sources */,
 				832767BC1944DD8D0028F888 /* GameScene.swift in Sources */,
 				832767BE1944DD8D0028F888 /* GameViewController.swift in Sources */,
 				832767B81944DD8D0028F888 /* AppDelegate.swift in Sources */,
+				8311E06B1944FFFC006DFFC9 /* ShipWeapon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SwiftSKTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -347,6 +369,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SwiftSKTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -407,6 +430,7 @@
 				832767D41944DD8D0028F888 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		832767D51944DD8D0028F888 /* Build configuration list for PBXNativeTarget "SwiftSKTestTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +439,7 @@
 				832767D71944DD8D0028F888 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
