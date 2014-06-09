@@ -8,20 +8,25 @@
 
 import UIKit
 
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SessionMDelegate {
                             
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
+        
+        SessionM.sharedInstance().delegate = self;
+        SessionM.sharedInstance().startSessionWithAppID("5b878b3980c7bbd9952250a2a8805d40167a75f1");
+        SessionM.sharedInstance().logLevel = SMLogLevelDebug;
         return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
@@ -40,7 +45,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func sessionM(sessionM: SessionM, didTransitionToState state: SessionMState)
+    {
+        if (state.value == SessionMStateStartedOffline.value)
+        {
+            println("No Session!");
+        }
+        else if (state.value == SessionMStateStartedOnline.value)
+        {
+            println("We have a Session!");
+        }
+        else
+        {
+            println("Session Stopped");
+        }
+    }
+    
+    func sessionM(sessionM: SessionM, shouldAutoPresentAchievement achievement: SMAchievementData) -> Bool
+    {
+        println("achievement description: \(achievement.description)");
+        return true;
+    }
+    
+    func sessionM(sessionM: SessionM, viewForActivity type: SMActivityType) -> UIView
+    {
+        println("Returned window.subviews[0]");
+        return self.window!.subviews[0] as UIView;
 
-
+    }
 }
 

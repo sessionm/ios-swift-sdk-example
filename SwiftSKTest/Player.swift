@@ -24,6 +24,8 @@ class Player
     
     var targetMoveLocation: CGPoint;
     
+    var playerMoveAchievement = false;
+    var playerHasMoved = false;
     
     init(spriteName: String, health: Int, level: Int, withCurrentWeapon currentWeapon: ShipWeapon = ShipWeapon(description: "Initial starting weapon.", damage: 1, type: "blaster", name:"Plasma Cannon"), initialStartPosition: CGPoint)
     {
@@ -45,6 +47,7 @@ class Player
         var inverseFilter:CGFloat = 1.0 - filter;
         player.sprite.position = CGPoint(x: location.x * filter + player.sprite.position.x * inverseFilter,
             y: location.y * filter + player.sprite.position.y * inverseFilter);
+    
         
     }
     

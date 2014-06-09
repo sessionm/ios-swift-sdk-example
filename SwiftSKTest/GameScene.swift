@@ -35,8 +35,8 @@ class GameScene: SKScene {
         waterColor.sprite.position = CGPointMake(self.size.width/2, self.size.height/2);
         background.sprite.position = CGPointMake(self.size.width/2, self.size.height/2);
         
-        self.addChild(waterColor.sprite);
-        self.addChild(background.sprite);
+        //self.addChild(waterColor.sprite);
+        //self.addChild(background.sprite);
         
         player.sprite.xScale = 0.5;
         player.sprite.yScale = 0.5;
@@ -51,7 +51,10 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             player.targetMoveLocation = location;
-            
+            if (!player.playerHasMoved)
+            {
+                player.playerHasMoved = true;
+            }
            
         }
     }
@@ -63,8 +66,6 @@ class GameScene: SKScene {
             player.targetMoveLocation = location;
             
         }
-        
-        
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -77,9 +78,33 @@ class GameScene: SKScene {
         else
         {
             lastUpdateTime = currentTime;
-            println("\(dt * 1000) + milliseconds since last update");
         }
+        //println("\(dt * 1000) milliseconds since last update");
         
         player.Update();
+        
+        if (player.playerHasMoved)
+        {
+            if (!player.playerMoveAchievement)
+            {
+                player.playerMoveAchievement = true;
+                SessionM.sharedInstance().logAction("MovePlayer");
+                
+            }
+        }
+        
+        if (SessionM.sharedInstance().user.unclaimedAchievementCount > 0)
+        {
+            //var achievementActivity: SMActivityType = SMActivityTypeAchievement;
+            //SessionM.sharedInstance().presentActivity(achievementActivity);
+            //println(SessionM.sharedInstance().user.unclaimedAchievementCount);
+        }
+        
+        if (SessionM.sharedInstance().currentActivity)
+        {
+            println("SessionM is currently doing \(SessionM.sharedInstance().currentActivity)");
+        }
+        
+        
     }
 }
