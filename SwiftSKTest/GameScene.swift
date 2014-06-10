@@ -9,13 +9,21 @@
 import SpriteKit
 
 
-class GameScene: SKScene {
+class GameScene: SKScene, SessionMDelegate {
     
     var player = Player(spriteName: "Ship", health: 100, level: 1, withCurrentWeapon: ShipWeapon(description: "Blaster Cannon", damage: 1, type: "Blaster Cannon", name: "BlasterCannon", fireSpeed: 0.05, projectile: Projectile(spriteName: "BlueBullet", type: "Bullet")), initialStartPosition: CGPoint(x: 300, y: 200));
     
     var lastUpdateTime:NSTimeInterval = 0;
     var dt:NSTimeInterval = 0;
-
+    
+    var achievementEarned = false;
+    var achievementDisplayed = false;
+    
+    var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate;
+    
+    var achievementData = SMAchievementData();
+    
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
@@ -54,7 +62,7 @@ class GameScene: SKScene {
             {
                 player.playerHasMoved = true;
             }
-           
+            
         }
     }
     
@@ -87,23 +95,50 @@ class GameScene: SKScene {
             if (!player.playerMoveAchievement)
             {
                 player.playerMoveAchievement = true;
-                SessionM.sharedInstance().logAction("MovePlayer");
+                               SessionM.sharedInstance().logAction("MovePlayer");
+                               SessionM.sharedInstance().logAction("Test");
+                                SessionM.sharedInstance().logAction("Test2");
+                                SessionM.sharedInstance().logAction("Test3");
+                SessionM.sharedInstance().logAction("Test4");
                 
             }
         }
         
         if (SessionM.sharedInstance().user.unclaimedAchievementCount > 0)
         {
-            //var achievementActivity: SMActivityType = SMActivityTypeAchievement;
-            //SessionM.sharedInstance().presentActivity(achievementActivity);
-            //println(SessionM.sharedInstance().user.unclaimedAchievementCount);
+            achievementEarned = true;
+            
+            if (achievementEarned)
+            {
+                if (!achievementDisplayed){
+                    
+                    if (SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)() != nil)
+                    {
+                        var achievementData: SMAchievementData? = SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)();
+                        
+                        if (achievementData?)
+                        {
+                            println("Definitely has an achievement");
+                            println(achievementData!);
+                            var nativeAchievementAlert: SMAlertViewCustomAchievement = SMAlertViewCustomAchievement(theData: achievementData!);
+                            SessionM.sharedInstance().presentActivity(SMActivityTypeAchievement);
+                            achievementDisplayed = true;
+                            
+                            //var achievementActivity: SMActivityType = SMActivityTypeAchievement;
+                            //SessionM.sharedInstance().presentActivity(achievementActivity);
+                            //println(SessionM.sharedInstance().user.unclaimedAchievementCount);
+                        }
+                    }
+                }
+            }
         }
         
         if (SessionM.sharedInstance().currentActivity)
         {
-            println("SessionM is currently doing \(SessionM.sharedInstance().currentActivity)");
+            //println("SessionM is currently doing \(SessionM.sharedInstance().currentActivity)");
         }
-        
-        
     }
+    
+    
+    
 }

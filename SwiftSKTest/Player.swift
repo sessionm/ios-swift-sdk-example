@@ -67,7 +67,7 @@ class Player
                     /*
                         Implement bullet shooting
                     */
-                    println("BULLET FIRED!");
+                    //println("BULLET FIRED!");
                     //fire bullet
                     playerCanShoot = false;
                     lastTimePlayerShot = currentTime;

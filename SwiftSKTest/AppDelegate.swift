@@ -13,13 +13,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, SessionMDelegate {
                             
     var window: UIWindow?
-
+    var achievement: SMAchievementData?;
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
+        
         
         SessionM.sharedInstance().delegate = self;
         SessionM.sharedInstance().startSessionWithAppID("5b878b3980c7bbd9952250a2a8805d40167a75f1");
         SessionM.sharedInstance().logLevel = SMLogLevelDebug;
+        
         return true
     }
 
@@ -68,11 +72,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SessionMDelegate {
         return true;
     }
     
-    func sessionM(sessionM: SessionM, viewForActivity type: SMActivityType) -> UIView
+    func sessionM(sessionM:SessionM, didUpdateUnclaimedAchievement achievement:SMAchievementData)
     {
-        println("Returned window.subviews[0]");
-        return self.window!.subviews[0] as UIView;
-
+        self.achievement = achievement;
     }
+    
+    func getCurrentAchievement() -> SMAchievementData?
+    {
+        return achievement?
+    }
+    
+//    func sessionM(sessionM: SessionM, viewForActivity type: SMActivityType) -> UIView
+//    {
+//        println("Returned window.subviews[0]");
+//        return self.window!.subviews[0] as UIView;
+//
+//    }
 }
 
