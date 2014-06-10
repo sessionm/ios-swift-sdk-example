@@ -12,6 +12,12 @@
 		8311E06D19450D2D006DFFC9 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E06C19450D2D006DFFC9 /* Projectile.swift */; };
 		8311E06F19452B66006DFFC9 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E06E19452B66006DFFC9 /* Background.swift */; };
 		8311E07119453C23006DFFC9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E07019453C23006DFFC9 /* Helpers.swift */; };
+		8311E08019469C8B006DFFC9 /* btnSessionM.png in Resources */ = {isa = PBXBuildFile; fileRef = 8311E07A19469C8B006DFFC9 /* btnSessionM.png */; };
+		8311E08119469C8B006DFFC9 /* btnSessionM_lg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8311E07B19469C8B006DFFC9 /* btnSessionM_lg.png */; };
+		8311E08219469C8B006DFFC9 /* GiftBox_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 8311E07C19469C8B006DFFC9 /* GiftBox_20x20.png */; };
+		8311E08319469C8B006DFFC9 /* M_Logo_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 8311E07D19469C8B006DFFC9 /* M_Logo_20x20.png */; };
+		8311E08419469C8B006DFFC9 /* Trophy_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 8311E07E19469C8B006DFFC9 /* Trophy_20x20.png */; };
+		8311E08519469C8B006DFFC9 /* libSessionM.1.11.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8311E07F19469C8B006DFFC9 /* libSessionM.1.11.3.a */; };
 		832767B81944DD8D0028F888 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832767B71944DD8D0028F888 /* AppDelegate.swift */; };
 		832767BA1944DD8D0028F888 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 832767B91944DD8D0028F888 /* GameScene.sks */; };
 		832767BC1944DD8D0028F888 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832767BB1944DD8D0028F888 /* GameScene.swift */; };
@@ -19,12 +25,6 @@
 		832767C11944DD8D0028F888 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832767BF1944DD8D0028F888 /* Main.storyboard */; };
 		832767C31944DD8D0028F888 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 832767C21944DD8D0028F888 /* Images.xcassets */; };
 		832767CF1944DD8D0028F888 /* SwiftSKTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832767CE1944DD8D0028F888 /* SwiftSKTestTests.swift */; };
-		C1C4FE261945D99800A58514 /* btnSessionM.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C4FE201945D99800A58514 /* btnSessionM.png */; };
-		C1C4FE271945D99800A58514 /* btnSessionM_lg.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C4FE211945D99800A58514 /* btnSessionM_lg.png */; };
-		C1C4FE281945D99800A58514 /* GiftBox_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C4FE221945D99800A58514 /* GiftBox_20x20.png */; };
-		C1C4FE291945D99800A58514 /* M_Logo_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C4FE231945D99800A58514 /* M_Logo_20x20.png */; };
-		C1C4FE2A1945D99800A58514 /* Trophy_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C4FE241945D99800A58514 /* Trophy_20x20.png */; };
-		C1C4FE2B1945D99800A58514 /* libSessionM.1.11.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4FE251945D99800A58514 /* libSessionM.1.11.3.a */; };
 		C1C4FE611945E57400A58514 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4FE601945E57400A58514 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1C4FE631945E58700A58514 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4FE621945E58700A58514 /* SystemConfiguration.framework */; };
 		C1C4FE651945E59000A58514 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4FE641945E59000A58514 /* MediaPlayer.framework */; };
@@ -53,6 +53,17 @@
 		8311E06C19450D2D006DFFC9 /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		8311E06E19452B66006DFFC9 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		8311E07019453C23006DFFC9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		8311E07419469C8B006DFFC9 /* SessionM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionM.h; sourceTree = "<group>"; };
+		8311E07519469C8B006DFFC9 /* SMAchievementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAchievementData.h; sourceTree = "<group>"; };
+		8311E07619469C8B006DFFC9 /* SMActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActivityViewController.h; sourceTree = "<group>"; };
+		8311E07719469C8B006DFFC9 /* SMPortalBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPortalBarButtonItem.h; sourceTree = "<group>"; };
+		8311E07819469C8B006DFFC9 /* SMPortalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPortalButton.h; sourceTree = "<group>"; };
+		8311E07A19469C8B006DFFC9 /* btnSessionM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSessionM.png; sourceTree = "<group>"; };
+		8311E07B19469C8B006DFFC9 /* btnSessionM_lg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSessionM_lg.png; sourceTree = "<group>"; };
+		8311E07C19469C8B006DFFC9 /* GiftBox_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GiftBox_20x20.png; sourceTree = "<group>"; };
+		8311E07D19469C8B006DFFC9 /* M_Logo_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = M_Logo_20x20.png; sourceTree = "<group>"; };
+		8311E07E19469C8B006DFFC9 /* Trophy_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trophy_20x20.png; sourceTree = "<group>"; };
+		8311E07F19469C8B006DFFC9 /* libSessionM.1.11.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSessionM.1.11.3.a; sourceTree = "<group>"; };
 		832767B21944DD8D0028F888 /* SwiftSKTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSKTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		832767B61944DD8D0028F888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		832767B71944DD8D0028F888 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,17 +75,6 @@
 		832767C81944DD8D0028F888 /* SwiftSKTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftSKTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		832767CD1944DD8D0028F888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		832767CE1944DD8D0028F888 /* SwiftSKTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSKTestTests.swift; sourceTree = "<group>"; };
-		C1C4FE1A1945D99800A58514 /* SessionM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionM.h; sourceTree = "<group>"; };
-		C1C4FE1B1945D99800A58514 /* SMAchievementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAchievementData.h; sourceTree = "<group>"; };
-		C1C4FE1C1945D99800A58514 /* SMActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActivityViewController.h; sourceTree = "<group>"; };
-		C1C4FE1D1945D99800A58514 /* SMPortalBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPortalBarButtonItem.h; sourceTree = "<group>"; };
-		C1C4FE1E1945D99800A58514 /* SMPortalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPortalButton.h; sourceTree = "<group>"; };
-		C1C4FE201945D99800A58514 /* btnSessionM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSessionM.png; sourceTree = "<group>"; };
-		C1C4FE211945D99800A58514 /* btnSessionM_lg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSessionM_lg.png; sourceTree = "<group>"; };
-		C1C4FE221945D99800A58514 /* GiftBox_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GiftBox_20x20.png; sourceTree = "<group>"; };
-		C1C4FE231945D99800A58514 /* M_Logo_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = M_Logo_20x20.png; sourceTree = "<group>"; };
-		C1C4FE241945D99800A58514 /* Trophy_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trophy_20x20.png; sourceTree = "<group>"; };
-		C1C4FE251945D99800A58514 /* libSessionM.1.11.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSessionM.1.11.3.a; sourceTree = "<group>"; };
 		C1C4FE5D1945DBE500A58514 /* SwiftSKTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSKTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		C1C4FE601945E57400A58514 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C1C4FE621945E58700A58514 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1C4FE2B1945D99800A58514 /* libSessionM.1.11.3.a in Frameworks */,
+				8311E08519469C8B006DFFC9 /* libSessionM.1.11.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +117,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8311E07219469C8B006DFFC9 /* SessionM-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				8311E07319469C8B006DFFC9 /* API */,
+				8311E07919469C8B006DFFC9 /* Assets */,
+				8311E07F19469C8B006DFFC9 /* libSessionM.1.11.3.a */,
+			);
+			name = "SessionM-SDK";
+			path = "../../Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK";
+			sourceTree = "<group>";
+		};
+		8311E07319469C8B006DFFC9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8311E07419469C8B006DFFC9 /* SessionM.h */,
+				8311E07519469C8B006DFFC9 /* SMAchievementData.h */,
+				8311E07619469C8B006DFFC9 /* SMActivityViewController.h */,
+				8311E07719469C8B006DFFC9 /* SMPortalBarButtonItem.h */,
+				8311E07819469C8B006DFFC9 /* SMPortalButton.h */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		8311E07919469C8B006DFFC9 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8311E07A19469C8B006DFFC9 /* btnSessionM.png */,
+				8311E07B19469C8B006DFFC9 /* btnSessionM_lg.png */,
+				8311E07C19469C8B006DFFC9 /* GiftBox_20x20.png */,
+				8311E07D19469C8B006DFFC9 /* M_Logo_20x20.png */,
+				8311E07E19469C8B006DFFC9 /* Trophy_20x20.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		832767A91944DD8D0028F888 = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +184,7 @@
 		832767B41944DD8D0028F888 /* SwiftSKTest */ = {
 			isa = PBXGroup;
 			children = (
-				C1C4FE181945D99800A58514 /* SessionM-SDK */,
+				8311E07219469C8B006DFFC9 /* SessionM-SDK */,
 				832767B71944DD8D0028F888 /* AppDelegate.swift */,
 				832767B91944DD8D0028F888 /* GameScene.sks */,
 				832767BB1944DD8D0028F888 /* GameScene.swift */,
@@ -189,41 +224,6 @@
 				832767CD1944DD8D0028F888 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C1C4FE181945D99800A58514 /* SessionM-SDK */ = {
-			isa = PBXGroup;
-			children = (
-				C1C4FE191945D99800A58514 /* API */,
-				C1C4FE1F1945D99800A58514 /* Assets */,
-				C1C4FE251945D99800A58514 /* libSessionM.1.11.3.a */,
-			);
-			name = "SessionM-SDK";
-			path = "../../Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK";
-			sourceTree = "<group>";
-		};
-		C1C4FE191945D99800A58514 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				C1C4FE1A1945D99800A58514 /* SessionM.h */,
-				C1C4FE1B1945D99800A58514 /* SMAchievementData.h */,
-				C1C4FE1C1945D99800A58514 /* SMActivityViewController.h */,
-				C1C4FE1D1945D99800A58514 /* SMPortalBarButtonItem.h */,
-				C1C4FE1E1945D99800A58514 /* SMPortalButton.h */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		C1C4FE1F1945D99800A58514 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				C1C4FE201945D99800A58514 /* btnSessionM.png */,
-				C1C4FE211945D99800A58514 /* btnSessionM_lg.png */,
-				C1C4FE221945D99800A58514 /* GiftBox_20x20.png */,
-				C1C4FE231945D99800A58514 /* M_Logo_20x20.png */,
-				C1C4FE241945D99800A58514 /* Trophy_20x20.png */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,14 +307,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1C4FE281945D99800A58514 /* GiftBox_20x20.png in Resources */,
+				8311E08019469C8B006DFFC9 /* btnSessionM.png in Resources */,
+				8311E08119469C8B006DFFC9 /* btnSessionM_lg.png in Resources */,
+				8311E08319469C8B006DFFC9 /* M_Logo_20x20.png in Resources */,
 				832767C31944DD8D0028F888 /* Images.xcassets in Resources */,
 				832767BA1944DD8D0028F888 /* GameScene.sks in Resources */,
-				C1C4FE271945D99800A58514 /* btnSessionM_lg.png in Resources */,
-				C1C4FE2A1945D99800A58514 /* Trophy_20x20.png in Resources */,
-				C1C4FE291945D99800A58514 /* M_Logo_20x20.png in Resources */,
 				832767C11944DD8D0028F888 /* Main.storyboard in Resources */,
-				C1C4FE261945D99800A58514 /* btnSessionM.png in Resources */,
+				8311E08419469C8B006DFFC9 /* Trophy_20x20.png in Resources */,
+				8311E08219469C8B006DFFC9 /* GiftBox_20x20.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,11 +461,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SwiftSKTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/ccooper/Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK",
+					"/Users/Chris/Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -483,11 +484,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SwiftSKTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/ccooper/Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK",
+					"/Users/Chris/Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

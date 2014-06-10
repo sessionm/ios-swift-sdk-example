@@ -13,6 +13,7 @@ class Projectile
 {
     var type: String;
     var sprite: SKSpriteNode;
+    var active: Bool = false;
     
     init(spriteName: String, type: String)
     {

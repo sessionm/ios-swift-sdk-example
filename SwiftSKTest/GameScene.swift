@@ -11,8 +11,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var player = Player(spriteName: "Ship", health: 100, level: 1, withCurrentWeapon: ShipWeapon(description: "Blaster Cannon", damage: 1, type: "Blaster Cannon", name: "Blaster Cannon"), initialStartPosition: CGPoint(x: 100, y: 100));
-    
+    var player = Player(spriteName: "Ship", health: 100, level: 1, withCurrentWeapon: ShipWeapon(description: "Blaster Cannon", damage: 1, type: "Blaster Cannon", name: "BlasterCannon", fireSpeed: 0.05, projectile: Projectile(spriteName: "BlueBullet", type: "Bullet")), initialStartPosition: CGPoint(x: 300, y: 200));
     
     var lastUpdateTime:NSTimeInterval = 0;
     var dt:NSTimeInterval = 0;
@@ -81,7 +80,7 @@ class GameScene: SKScene {
         }
         //println("\(dt * 1000) milliseconds since last update");
         
-        player.Update();
+        player.Update(currentTime);
         
         if (player.playerHasMoved)
         {
