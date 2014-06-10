@@ -9,7 +9,7 @@
 import SpriteKit
 
 
-class GameScene: SKScene, SessionMDelegate {
+class GameScene: SKScene {
     
     var player = Player(spriteName: "Ship", health: 100, level: 1, withCurrentWeapon: ShipWeapon(description: "Blaster Cannon", damage: 1, type: "Blaster Cannon", name: "BlasterCannon", fireSpeed: 0.05, projectile: Projectile(spriteName: "BlueBullet", type: "Bullet")), initialStartPosition: CGPoint(x: 300, y: 200));
     
@@ -95,40 +95,43 @@ class GameScene: SKScene, SessionMDelegate {
             if (!player.playerMoveAchievement)
             {
                 player.playerMoveAchievement = true;
-                            // SessionM.sharedInstance().logAction("MovePlayer");
-//                               SessionM.sharedInstance().logAction("Test");
-//                                SessionM.sharedInstance().logAction("Test2");
-//                                SessionM.sharedInstance().logAction("Test3");
-//                SessionM.sharedInstance().logAction("Test4");
-                SessionM.sharedInstance().logAction("Test6");
-                
+                            SessionM.sharedInstance().logAction("MovePlayer");
             }
         }
         
+        //make sure the user actually has unclaimed achievements
         if (SessionM.sharedInstance().user.unclaimedAchievementCount > 0)
         {
             achievementEarned = true;
-            
             if (achievementEarned)
             {
                 if (!achievementDisplayed){
                     
-                    if (SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)() != nil)
+                    //make sure that the Achievement has been set before assigning it, just in case
+                    //My own method that returns the achievement data if it exists.
+                    //Note that you must cast your AppDelegate before this step if you choose to do it this way
+                    //It is a class variable that is called like this var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate;
+                    if (SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)()?)
                     {
+                        // Achievement data comes from didUpdateUnclaimedAchievement achievement delgate method from the SessionM class.
                         var achievementData: SMAchievementData? = SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)();
                         
+                        //validate achievement data again just in case, probably don't have to do this
                         if (achievementData?)
                         {
-                            println("Definitely has an achievement");
-                            println(achievementData!);
+                            //instantiate native achievement class and pass it the achievement data
                             var nativeAchievementAlert: SMAlertViewCustomAchievement = SMAlertViewCustomAchievement(theData: achievementData!);
-                            //SessionM.sharedInstance().presentActivity(SMActivityTypeAchievement);
+                            //call its preset() function
                             nativeAchievementAlert.present();
-                            achievementDisplayed = true;
                             
-                            //var achievementActivity: SMActivityType = SMActivityTypeAchievement;
-                            //SessionM.sharedInstance().presentActivity(achievementActivity);
-                            //println(SessionM.sharedInstance().user.unclaimedAchievementCount);
+                            /*
+                                uncomment this if you want to display non-native achievements, I managed to get it working with a full portal view
+                                and by setting the Display Type in the dev portal to Native Display
+                            
+                            */
+                            //SessionM.sharedInstance().presentActivity(SMActivityTypeAchievement);
+                            
+                            achievementDisplayed = true;
                         }
                     }
                 }
