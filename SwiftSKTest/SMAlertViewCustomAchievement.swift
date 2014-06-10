@@ -13,23 +13,37 @@ class SMAlertViewCustomAchievement : SMAchievementActivity, UIAlertViewDelegate
 {
     
     var alertView:UIAlertView?;
-    
-    
+    var aData:SMAchievementData;
     
     init(theData:SMAchievementData){
+        
+        self.aData = theData;
         super.init(achievmentData:theData);
+        println("SMAlertViewCustom init");
     }
     
     
     func present(){
-    
-        var alertView = UIAlertView(title: super.data.name, message: super.data.message, delegate: self, cancelButtonTitle: "Dismiss");
-        alertView.addButtonWithTitle("Claim");
+        println("event called");
         
-        self.alertView = alertView;
+        /*
+            UIAlertView is now deprecated and the SDK should be updated to reflect that
+        */
         
-        self.alertView?.show();
+        var aView = UIAlertView();
+        aView.title = self.aData.name;
+        aView.message = self.aData.message;
+        aView.delegate = self;
+        aView.addButtonWithTitle("Dismiss");
+        aView.cancelButtonIndex = 0;
+        aView.addButtonWithTitle("Claim");
         
+        println("alert view created");
+        
+        self.alertView = aView;
+        if (self.alertView?){
+        self.alertView!.show();
+        }
     }
     
     func dismiss(){
@@ -44,6 +58,7 @@ class SMAlertViewCustomAchievement : SMAchievementActivity, UIAlertViewDelegate
     func didPresentAlertView(alertView: UIAlertView)
     {
         super.notifyPresented();
+        println("Notified presented");
     }
     
     func alertView(alertView:UIAlertView, didDismissWithButtonIndex buttonIndex:NSInteger)
@@ -59,5 +74,3 @@ class SMAlertViewCustomAchievement : SMAchievementActivity, UIAlertViewDelegate
         }
     }
 }
-
-

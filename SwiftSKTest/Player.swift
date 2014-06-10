@@ -62,11 +62,13 @@ class Player
                 {
                     playerCanShoot = true;
                 }
+            
                 if (playerCanShoot)
                 {
                     /*
                         Implement bullet shooting
                     */
+                    
                     //println("BULLET FIRED!");
                     //fire bullet
                     playerCanShoot = false;

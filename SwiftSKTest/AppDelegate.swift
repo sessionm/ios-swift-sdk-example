@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SessionMDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
         
-        
         SessionM.sharedInstance().delegate = self;
         SessionM.sharedInstance().startSessionWithAppID("5b878b3980c7bbd9952250a2a8805d40167a75f1");
         SessionM.sharedInstance().logLevel = SMLogLevelDebug;
@@ -30,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SessionMDelegate {
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-        
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
@@ -69,7 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SessionMDelegate {
     func sessionM(sessionM: SessionM, shouldAutoPresentAchievement achievement: SMAchievementData) -> Bool
     {
         println("achievement description: \(achievement.description)");
-        return true;
+        
+        //set to true to enable automatic achievement displays, keep false to display them on your own
+        return false;
     }
     
     func sessionM(sessionM:SessionM, didUpdateUnclaimedAchievement achievement:SMAchievementData)

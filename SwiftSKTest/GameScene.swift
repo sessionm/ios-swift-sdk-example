@@ -95,11 +95,12 @@ class GameScene: SKScene, SessionMDelegate {
             if (!player.playerMoveAchievement)
             {
                 player.playerMoveAchievement = true;
-                               SessionM.sharedInstance().logAction("MovePlayer");
-                               SessionM.sharedInstance().logAction("Test");
-                                SessionM.sharedInstance().logAction("Test2");
-                                SessionM.sharedInstance().logAction("Test3");
-                SessionM.sharedInstance().logAction("Test4");
+                            // SessionM.sharedInstance().logAction("MovePlayer");
+//                               SessionM.sharedInstance().logAction("Test");
+//                                SessionM.sharedInstance().logAction("Test2");
+//                                SessionM.sharedInstance().logAction("Test3");
+//                SessionM.sharedInstance().logAction("Test4");
+                SessionM.sharedInstance().logAction("Test6");
                 
             }
         }
@@ -121,7 +122,8 @@ class GameScene: SKScene, SessionMDelegate {
                             println("Definitely has an achievement");
                             println(achievementData!);
                             var nativeAchievementAlert: SMAlertViewCustomAchievement = SMAlertViewCustomAchievement(theData: achievementData!);
-                            SessionM.sharedInstance().presentActivity(SMActivityTypeAchievement);
+                            //SessionM.sharedInstance().presentActivity(SMActivityTypeAchievement);
+                            nativeAchievementAlert.present();
                             achievementDisplayed = true;
                             
                             //var achievementActivity: SMActivityType = SMActivityTypeAchievement;
