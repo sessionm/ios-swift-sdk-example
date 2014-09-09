@@ -13,7 +13,7 @@ class ShipWeapon
 {
     let clipSize: Int = 100;
     
-    var projectilesToFire: Projectile[];
+    var projectilesToFire: [Projectile];
     
     var description: String;
     var damage: Int;
@@ -29,6 +29,6 @@ class ShipWeapon
         self.type = type;
         self.name = name;
         self.fireSpeed = fireSpeed;
-        self.projectilesToFire = Projectile[](count: clipSize, repeatedValue: projectile);
+        self.projectilesToFire = [Projectile](count: clipSize, repeatedValue: projectile);
     }
 }

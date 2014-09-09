@@ -18,7 +18,7 @@ class Player
     
     var currentWeapon: ShipWeapon;
     
-    var weapons = ShipWeapon[]();
+    var weapons = [ShipWeapon]();
     
     var movePointsPerSecond = 150.0;
     

@@ -12,22 +12,34 @@
 	<dict>
 		<key>7C8699F4-4D87-476C-90FE-A42BA5E8B3FB</key>
 		<string>ssh://github.com/Alistanis/SKSwiftTest.git</string>
+		<key>BE4AC716EEA03C341001758A7F80E12F2C8022AE</key>
+		<string>ssh://stash.o.sessionm.com:7999/sdk/swift-spritekit-example.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SwiftSKTest.xcodeproj/project.xcworkspace</string>
+	<string>SwiftSKTest.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7C8699F4-4D87-476C-90FE-A42BA5E8B3FB</key>
+		<string>../../../SKSwiftTest</string>
+		<key>BE4AC716EEA03C341001758A7F80E12F2C8022AE</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/Alistanis/SKSwiftTest.git</string>
+	<string>ssh://stash.o.sessionm.com:7999/sdk/swift-spritekit-example.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7C8699F4-4D87-476C-90FE-A42BA5E8B3FB</string>
+	<string>BE4AC716EEA03C341001758A7F80E12F2C8022AE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BE4AC716EEA03C341001758A7F80E12F2C8022AE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SDKSpriteKitExample</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

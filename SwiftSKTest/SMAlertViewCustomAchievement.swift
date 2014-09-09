@@ -38,13 +38,13 @@ class SMAlertViewCustomAchievement : SMAchievementActivity, UIAlertViewDelegate
         
         self.alertView = aView;
         //optionals must be checked before they are unwrapped
-        if (self.alertView?){
+        if ((self.alertView?) != nil){
         self.alertView!.show();
             
         }
     }
     func dismiss(){
-        if (self.alertView?)
+        if ((self.alertView?) != nil)
         {
             self.alertView!.dismissWithClickedButtonIndex(0, animated: true);
         }

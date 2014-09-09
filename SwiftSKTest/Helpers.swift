@@ -11,7 +11,8 @@ import SpriteKit
 
 func moveSprite(sprite:SKSpriteNode, velocity:CGPoint, dt:NSTimeInterval, location:CGPoint)
 {
-    var amountToMove = CGPointMake(velocity.x * dt, velocity.y * dt);
+    var time:CGFloat = CGFloat(dt);
+    var amountToMove = CGPointMake(velocity.x * time, velocity.y * time);
     
     
     sprite.position = CGPointMake(sprite.position.x + amountToMove.x, sprite.position.y + amountToMove.y);

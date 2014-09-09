@@ -111,13 +111,13 @@ class GameScene: SKScene {
                     //My own method that returns the achievement data if it exists.
                     //Note that you must cast your AppDelegate before this step if you choose to do it this way
                     //It is a class variable that is called like this var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate;
-                    if (SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)()?)
+                    if ((SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)()?) != nil)
                     {
                         // Achievement data comes from didUpdateUnclaimedAchievement achievement delgate method from the SessionM class.
                         var achievementData: SMAchievementData? = SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)();
                         
                         //validate achievement data again just in case, probably don't have to do this
-                        if (achievementData?)
+                        if ((achievementData?) != nil)
                         {
                             //instantiate native achievement class and pass it the achievement data
                             var nativeAchievementAlert: SMAlertViewCustomAchievement = SMAlertViewCustomAchievement(theData: achievementData!);
@@ -138,7 +138,7 @@ class GameScene: SKScene {
             }
         }
         
-        if (SessionM.sharedInstance().currentActivity)
+        if ((SessionM.sharedInstance().currentActivity) != nil)
         {
             //println("SessionM is currently doing \(SessionM.sharedInstance().currentActivity)");
         }

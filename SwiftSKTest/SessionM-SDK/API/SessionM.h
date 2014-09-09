@@ -7,7 +7,7 @@
 
 #ifndef __SESSIONM__
 #define __SESSIONM__
-#define __SESSIONM_SDK_VERSION__ @"1.11.2"
+#define __SESSIONM_SDK_VERSION__ @"1.11.7"
 
 #import <UIKit/UIKit.h>
 #import "SMAchievementData.h"
@@ -439,6 +439,17 @@ typedef struct SMLocationCoordinate2D {
  @abstract Log category.
  */
 @property(nonatomic) int logCategories;
+
+/*!
+ @property displayInAppWelcomeFlow
+ @abstract when to display in-app welcome flow
+ */
+@property(nonatomic) NSInteger displayInAppWelcomeFlow;
+/*!
+ @property inAppPromotionTile
+ @abstract in-app promotion tile.
+ */
+@property(nonatomic, readwrite) NSDictionary *inAppPromotionTile;
 /*!
  @property locationCoordinate
  @abstract Location coordinate info.
