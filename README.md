@@ -7,6 +7,7 @@ Main sections to pay attention to are application:DidFinishLaunchingWithOptions 
 Here you will see how the SessionM SDK is dropped into the project and started.
 
 SessionM.sharedInstance().delegete = self;
+
 SessionM.sharedInstance().startSessionWithAppID("YOU_APP_ID");
 
 GameScene.swift update function shows how to log actions and display achievements.
