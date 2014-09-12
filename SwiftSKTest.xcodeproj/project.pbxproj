@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8311E0691944FE9A006DFFC9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E0681944FE9A006DFFC9 /* Player.swift */; };
-		8311E06B1944FFFC006DFFC9 /* ShipWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E06A1944FFFC006DFFC9 /* ShipWeapon.swift */; };
-		8311E06D19450D2D006DFFC9 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E06C19450D2D006DFFC9 /* Projectile.swift */; };
-		8311E06F19452B66006DFFC9 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E06E19452B66006DFFC9 /* Background.swift */; };
-		8311E07119453C23006DFFC9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311E07019453C23006DFFC9 /* Helpers.swift */; };
 		832767B81944DD8D0028F888 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832767B71944DD8D0028F888 /* AppDelegate.swift */; };
 		832767BA1944DD8D0028F888 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 832767B91944DD8D0028F888 /* GameScene.sks */; };
 		832767BC1944DD8D0028F888 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832767BB1944DD8D0028F888 /* GameScene.swift */; };
@@ -50,10 +46,6 @@
 
 /* Begin PBXFileReference section */
 		8311E0681944FE9A006DFFC9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		8311E06A1944FFFC006DFFC9 /* ShipWeapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipWeapon.swift; sourceTree = "<group>"; };
-		8311E06C19450D2D006DFFC9 /* Projectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
-		8311E06E19452B66006DFFC9 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
-		8311E07019453C23006DFFC9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		832767B21944DD8D0028F888 /* SwiftSKTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSKTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		832767B61944DD8D0028F888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		832767B71944DD8D0028F888 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,10 +152,6 @@
 				832767C21944DD8D0028F888 /* Images.xcassets */,
 				832767B51944DD8D0028F888 /* Supporting Files */,
 				8311E0681944FE9A006DFFC9 /* Player.swift */,
-				8311E06C19450D2D006DFFC9 /* Projectile.swift */,
-				8311E06A1944FFFC006DFFC9 /* ShipWeapon.swift */,
-				8311E06E19452B66006DFFC9 /* Background.swift */,
-				8311E07019453C23006DFFC9 /* Helpers.swift */,
 				C1FDF651194756240031A0A3 /* SMAlertViewCustomAchievement.swift */,
 			);
 			path = SwiftSKTest;
@@ -334,15 +322,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8311E06D19450D2D006DFFC9 /* Projectile.swift in Sources */,
-				8311E06F19452B66006DFFC9 /* Background.swift in Sources */,
 				8311E0691944FE9A006DFFC9 /* Player.swift in Sources */,
-				8311E07119453C23006DFFC9 /* Helpers.swift in Sources */,
 				832767BC1944DD8D0028F888 /* GameScene.swift in Sources */,
 				832767BE1944DD8D0028F888 /* GameViewController.swift in Sources */,
 				832767B81944DD8D0028F888 /* AppDelegate.swift in Sources */,
 				C1FDF652194756240031A0A3 /* SMAlertViewCustomAchievement.swift in Sources */,
-				8311E06B1944FFFC006DFFC9 /* ShipWeapon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

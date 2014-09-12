@@ -14,11 +14,7 @@ class Player
     var health = 100;
     var level = 1;
     
-    var sprite = SKSpriteNode(imageNamed: "Ship")
-    
-    var currentWeapon: ShipWeapon;
-    
-    var weapons = [ShipWeapon]();
+    var sprite = SKSpriteNode(imageNamed: "Ship");
     
     var movePointsPerSecond = 150.0;
     
@@ -30,19 +26,16 @@ class Player
     var lastTimePlayerShot: CFTimeInterval = 0;
     var playerCanShoot = false;
     
-    init(spriteName: String, health: Int, level: Int, withCurrentWeapon currentWeapon: ShipWeapon = ShipWeapon(description: "Initial starting weapon.", damage: 1, type: "blaster", name:"Plasma Cannon", fireSpeed: fireSpeeds.Fast.toRaw(), projectile: Projectile(spriteName: "BlueBullet", type: "Bullet")), initialStartPosition: CGPoint)
+    init(spriteName: String, health: Int, level: Int, initialStartPosition: CGPoint)
     {
         self.health = health;
         self.level = level;
-        self.currentWeapon = currentWeapon;
-        self.weapons.append(currentWeapon);
         self.targetMoveLocation = initialStartPosition;
     }
     
     func Update(currentTime: CFTimeInterval)
     {
         move(self, location: targetMoveLocation);
-        fire(self, currentTime: currentTime);
     }
     
     func move(player: Player, location:CGPoint)
@@ -53,32 +46,6 @@ class Player
             y: location.y * filter + player.sprite.position.y * inverseFilter);
     }
     
-    func fire(player: Player, currentTime: CFTimeInterval)
-    {
-        for projectile: Projectile in player.currentWeapon.projectilesToFire
-        {
-            
-                if (currentTime - lastTimePlayerShot > player.currentWeapon.fireSpeed)
-                {
-                    playerCanShoot = true;
-                }
-            
-                if (playerCanShoot)
-                {
-                    /*
-                        Implement bullet shooting
-                    */
-                    
-                    //println("BULLET FIRED!");
-                    //fire bullet
-                    playerCanShoot = false;
-                    lastTimePlayerShot = currentTime;
-                    
-                }
-            
-            
-        }
-    }
 }
 
 

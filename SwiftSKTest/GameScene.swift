@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var player = Player(spriteName: "Ship", health: 100, level: 1, withCurrentWeapon: ShipWeapon(description: "Blaster Cannon", damage: 1, type: "Blaster Cannon", name: "BlasterCannon", fireSpeed: 0.05, projectile: Projectile(spriteName: "BlueBullet", type: "Bullet")), initialStartPosition: CGPoint(x: 300, y: 200));
+    var player = Player(spriteName: "Ship", health: 100, level: 1, initialStartPosition: CGPoint(x: 300, y: 200));
     
     var lastUpdateTime:NSTimeInterval = 0;
     var dt:NSTimeInterval = 0;
@@ -26,25 +26,7 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        
-        /*let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        self.addChild(myLabel)
-        */
-        
-        //var background = Background(size: UIScreen.mainScreen().bounds.size, name: "Trees1280");
-        var waterColor = Background(size: self.size, name:"Watercolor1280");
-        var background = Background(size: self.size, name:"Trees1280");
-        
-        waterColor.sprite.position = CGPointMake(self.size.width/2, self.size.height/2);
-        background.sprite.position = CGPointMake(self.size.width/2, self.size.height/2);
-        
-        //self.addChild(waterColor.sprite);
-        //self.addChild(background.sprite);
-        
+                
         player.sprite.xScale = 0.5;
         player.sprite.yScale = 0.5;
         
@@ -95,7 +77,7 @@ class GameScene: SKScene {
             if (!player.playerMoveAchievement)
             {
                 player.playerMoveAchievement = true;
-                            SessionM.sharedInstance().logAction("MovePlayer");
+                SessionM.sharedInstance().logAction("MovePlayer");
             }
         }
         
@@ -129,7 +111,7 @@ class GameScene: SKScene {
                                 and by setting the Display Type in the dev portal to Native Display
                             
                             */
-                            //SessionM.sharedInstance().presentActivity(SMActivityTypeAchievement);
+                            SessionM.sharedInstance().presentActivity(SMActivityTypeAchievement);
                             
                             achievementDisplayed = true;
                         }
