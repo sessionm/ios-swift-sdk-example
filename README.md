@@ -1,10 +1,16 @@
 SKSwiftTest
 ===========
 
-Test iOS game using Sprite Kit with the Swift language
+Sample project showing how to implement the SessionM SDK into a SpriteKit based Swift language project.
 
-Implements the iOS SessionM SDK for iOS8 and the iOS8 SDK
+Main sections to pay attention to are application:DidFinishLaunchingWithOptions in the AppDelegate.swift class. 
+Here you will see how the SessionM SDK is dropped into the project and started.
 
--Native achievements work
+SessionM.sharedInstance().delegete = self;
+SessionM.sharedInstance().startSessionWithAppID("YOU_APP_ID");
 
--HTML5 achievements are mostly broken
+GameScene.swift update function shows how to log actions and display achievements.
+
+GameViewController.swift contains code to display a SessionM Portal button. 
+
+For more help see http://www.sessionm.com/documentation/index.php
