@@ -15,3 +15,5 @@ GameScene.swift update function shows how to log actions and display achievement
 GameViewController.swift contains code to display a SessionM Portal button. 
 
 For more help see http://www.sessionm.com/documentation/index.php
+
+License: MIT
