@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SessionMDelegate {
         // Override point for customization after application launch.
         
         SessionM.sharedInstance().delegate = self;
-        SessionM.sharedInstance().startSessionWithAppID("5b878b3980c7bbd9952250a2a8805d40167a75f1");
+        SessionM.sharedInstance().startSessionWithAppID(YOUR SESSIONM KEY HERE);
         SessionM.sharedInstance().logLevel = SMLogLevelDebug;
         
         return true
