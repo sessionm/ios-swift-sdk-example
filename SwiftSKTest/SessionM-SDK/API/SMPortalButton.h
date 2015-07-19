@@ -37,12 +37,17 @@ typedef enum SMPortalButtonBadgePosition {
  @property button
  @discussion A stateful button that will be enabled/disabled depending on the session state. Customize this as needed.
  */
-@property(nonatomic, retain, readonly) UIButton *button;
+@property(nonatomic, strong, readonly) UIButton *button;
 /*!
  @property shouldDisplayBadge
  @discussion This property is used to toggle the display of the unclaimed achievement badge.
  */
 @property(nonatomic) BOOL shouldDisplayBadge;
+/*!
+ @property shouldDisableOnOptOut
+ @discussion This property is used to determine whether the portal button will be disabled when the user is opted out. Default value is YES, but setting this property to NO is recommended if you want to allow users to opt back in through the portal button.
+ */
+@property(nonatomic) BOOL shouldDisableOnOptOut;
 /*!
  @property badgePosition
  */
@@ -59,12 +64,12 @@ typedef enum SMPortalButtonBadgePosition {
     takes effect only if badge position is SMPortalButtonPositionCustom. After changing the badge property application should call @link layoutBadge @/link
     method to ensure that the badge circle is properly sized.
  */
-@property (nonatomic, retain, readonly) UILabel *badge;
+@property (nonatomic, strong, readonly) UILabel *badge;
 /*!
  @property presentingController
  @discussion UIViewController object to use as presenting controller for portal view controller. 
  */
-@property(nonatomic, retain) UIViewController *presentingController;
+@property(nonatomic, strong) UIViewController *presentingController;
 
 /*!
  @abstract Resizes badge after one of its properties was updated via @link badge @/link property.

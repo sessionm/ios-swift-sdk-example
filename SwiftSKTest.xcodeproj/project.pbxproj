@@ -15,6 +15,13 @@
 		832767C11944DD8D0028F888 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832767BF1944DD8D0028F888 /* Main.storyboard */; };
 		832767C31944DD8D0028F888 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 832767C21944DD8D0028F888 /* Images.xcassets */; };
 		832767CF1944DD8D0028F888 /* SwiftSKTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832767CE1944DD8D0028F888 /* SwiftSKTestTests.swift */; };
+		998346FA1B5B0E2D00876A04 /* btnSessionM.png in Resources */ = {isa = PBXBuildFile; fileRef = 998346F41B5B0E2D00876A04 /* btnSessionM.png */; };
+		998346FB1B5B0E2D00876A04 /* btnSessionM_lg.png in Resources */ = {isa = PBXBuildFile; fileRef = 998346F51B5B0E2D00876A04 /* btnSessionM_lg.png */; };
+		998346FC1B5B0E2D00876A04 /* GiftBox_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 998346F61B5B0E2D00876A04 /* GiftBox_20x20.png */; };
+		998346FD1B5B0E2D00876A04 /* M_Logo_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 998346F71B5B0E2D00876A04 /* M_Logo_20x20.png */; };
+		998346FE1B5B0E2D00876A04 /* Trophy_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 998346F81B5B0E2D00876A04 /* Trophy_20x20.png */; };
+		998346FF1B5B0E2D00876A04 /* libSessionM.1.14.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 998346F91B5B0E2D00876A04 /* libSessionM.1.14.6.a */; };
+		998347031B5B1FC800876A04 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998347021B5B1FC800876A04 /* ImageIO.framework */; };
 		C1C4FE611945E57400A58514 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4FE601945E57400A58514 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1C4FE631945E58700A58514 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4FE621945E58700A58514 /* SystemConfiguration.framework */; };
 		C1C4FE651945E59000A58514 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4FE641945E59000A58514 /* MediaPlayer.framework */; };
@@ -26,12 +33,6 @@
 		C1C4FE711945E7B000A58514 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4FE701945E7B000A58514 /* Foundation.framework */; };
 		C1C4FE731945E7D900A58514 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4FE721945E7D900A58514 /* AVFoundation.framework */; };
 		C1FDF652194756240031A0A3 /* SMAlertViewCustomAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDF651194756240031A0A3 /* SMAlertViewCustomAchievement.swift */; };
-		E17FB6E419BF368700914D13 /* btnSessionM.png in Resources */ = {isa = PBXBuildFile; fileRef = E17FB6DE19BF368700914D13 /* btnSessionM.png */; };
-		E17FB6E519BF368700914D13 /* btnSessionM_lg.png in Resources */ = {isa = PBXBuildFile; fileRef = E17FB6DF19BF368700914D13 /* btnSessionM_lg.png */; };
-		E17FB6E619BF368700914D13 /* GiftBox_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = E17FB6E019BF368700914D13 /* GiftBox_20x20.png */; };
-		E17FB6E719BF368700914D13 /* M_Logo_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = E17FB6E119BF368700914D13 /* M_Logo_20x20.png */; };
-		E17FB6E819BF368700914D13 /* Trophy_20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = E17FB6E219BF368700914D13 /* Trophy_20x20.png */; };
-		E17FB6E919BF368700914D13 /* libSessionM.1.11.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E17FB6E319BF368700914D13 /* libSessionM.1.11.7.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,20 @@
 		832767C81944DD8D0028F888 /* SwiftSKTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftSKTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		832767CD1944DD8D0028F888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		832767CE1944DD8D0028F888 /* SwiftSKTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSKTestTests.swift; sourceTree = "<group>"; };
+		998346ED1B5B0E2D00876A04 /* SessionM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionM.h; sourceTree = "<group>"; };
+		998346EE1B5B0E2D00876A04 /* SMAchievementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAchievementData.h; sourceTree = "<group>"; };
+		998346EF1B5B0E2D00876A04 /* SMActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActivityViewController.h; sourceTree = "<group>"; };
+		998346F01B5B0E2D00876A04 /* SMLoaderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoaderController.h; sourceTree = "<group>"; };
+		998346F11B5B0E2D00876A04 /* SMPortalBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPortalBarButtonItem.h; sourceTree = "<group>"; };
+		998346F21B5B0E2D00876A04 /* SMPortalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPortalButton.h; sourceTree = "<group>"; };
+		998346F41B5B0E2D00876A04 /* btnSessionM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSessionM.png; sourceTree = "<group>"; };
+		998346F51B5B0E2D00876A04 /* btnSessionM_lg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSessionM_lg.png; sourceTree = "<group>"; };
+		998346F61B5B0E2D00876A04 /* GiftBox_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GiftBox_20x20.png; sourceTree = "<group>"; };
+		998346F71B5B0E2D00876A04 /* M_Logo_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = M_Logo_20x20.png; sourceTree = "<group>"; };
+		998346F81B5B0E2D00876A04 /* Trophy_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trophy_20x20.png; sourceTree = "<group>"; };
+		998346F91B5B0E2D00876A04 /* libSessionM.1.14.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSessionM.1.14.6.a; sourceTree = "<group>"; };
+		998347001B5B1F2E00876A04 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		998347021B5B1FC800876A04 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		C1C4FE5D1945DBE500A58514 /* SwiftSKTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSKTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		C1C4FE601945E57400A58514 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C1C4FE621945E58700A58514 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -69,17 +84,6 @@
 		C1C4FE701945E7B000A58514 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C1C4FE721945E7D900A58514 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C1FDF651194756240031A0A3 /* SMAlertViewCustomAchievement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMAlertViewCustomAchievement.swift; sourceTree = "<group>"; };
-		E17FB6D819BF368700914D13 /* SessionM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionM.h; sourceTree = "<group>"; };
-		E17FB6D919BF368700914D13 /* SMAchievementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAchievementData.h; sourceTree = "<group>"; };
-		E17FB6DA19BF368700914D13 /* SMActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActivityViewController.h; sourceTree = "<group>"; };
-		E17FB6DB19BF368700914D13 /* SMPortalBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPortalBarButtonItem.h; sourceTree = "<group>"; };
-		E17FB6DC19BF368700914D13 /* SMPortalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPortalButton.h; sourceTree = "<group>"; };
-		E17FB6DE19BF368700914D13 /* btnSessionM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSessionM.png; sourceTree = "<group>"; };
-		E17FB6DF19BF368700914D13 /* btnSessionM_lg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSessionM_lg.png; sourceTree = "<group>"; };
-		E17FB6E019BF368700914D13 /* GiftBox_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GiftBox_20x20.png; sourceTree = "<group>"; };
-		E17FB6E119BF368700914D13 /* M_Logo_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = M_Logo_20x20.png; sourceTree = "<group>"; };
-		E17FB6E219BF368700914D13 /* Trophy_20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trophy_20x20.png; sourceTree = "<group>"; };
-		E17FB6E319BF368700914D13 /* libSessionM.1.11.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSessionM.1.11.7.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E17FB6E919BF368700914D13 /* libSessionM.1.11.7.a in Frameworks */,
+				998347031B5B1FC800876A04 /* ImageIO.framework in Frameworks */,
+				998346FF1B5B0E2D00876A04 /* libSessionM.1.14.6.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +119,8 @@
 		832767A91944DD8D0028F888 = {
 			isa = PBXGroup;
 			children = (
+				998347021B5B1FC800876A04 /* ImageIO.framework */,
+				998347001B5B1F2E00876A04 /* CoreImage.framework */,
 				C1C4FE721945E7D900A58514 /* AVFoundation.framework */,
 				C1C4FE701945E7B000A58514 /* Foundation.framework */,
 				C1C4FE6E1945E5B500A58514 /* CoreLocation.framework */,
@@ -143,7 +150,7 @@
 		832767B41944DD8D0028F888 /* SwiftSKTest */ = {
 			isa = PBXGroup;
 			children = (
-				E17FB6D619BF368700914D13 /* SessionM-SDK */,
+				998346EB1B5B0E2D00876A04 /* SessionM-SDK */,
 				832767B71944DD8D0028F888 /* AppDelegate.swift */,
 				832767B91944DD8D0028F888 /* GameScene.sks */,
 				832767BB1944DD8D0028F888 /* GameScene.swift */,
@@ -182,36 +189,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E17FB6D619BF368700914D13 /* SessionM-SDK */ = {
+		998346EB1B5B0E2D00876A04 /* SessionM-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				E17FB6D719BF368700914D13 /* API */,
-				E17FB6DD19BF368700914D13 /* Assets */,
-				E17FB6E319BF368700914D13 /* libSessionM.1.11.7.a */,
+				998346EC1B5B0E2D00876A04 /* API */,
+				998346F31B5B0E2D00876A04 /* Assets */,
+				998346F91B5B0E2D00876A04 /* libSessionM.1.14.6.a */,
 			);
 			path = "SessionM-SDK";
 			sourceTree = "<group>";
 		};
-		E17FB6D719BF368700914D13 /* API */ = {
+		998346EC1B5B0E2D00876A04 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				E17FB6D819BF368700914D13 /* SessionM.h */,
-				E17FB6D919BF368700914D13 /* SMAchievementData.h */,
-				E17FB6DA19BF368700914D13 /* SMActivityViewController.h */,
-				E17FB6DB19BF368700914D13 /* SMPortalBarButtonItem.h */,
-				E17FB6DC19BF368700914D13 /* SMPortalButton.h */,
+				998346ED1B5B0E2D00876A04 /* SessionM.h */,
+				998346EE1B5B0E2D00876A04 /* SMAchievementData.h */,
+				998346EF1B5B0E2D00876A04 /* SMActivityViewController.h */,
+				998346F01B5B0E2D00876A04 /* SMLoaderController.h */,
+				998346F11B5B0E2D00876A04 /* SMPortalBarButtonItem.h */,
+				998346F21B5B0E2D00876A04 /* SMPortalButton.h */,
 			);
 			path = API;
 			sourceTree = "<group>";
 		};
-		E17FB6DD19BF368700914D13 /* Assets */ = {
+		998346F31B5B0E2D00876A04 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				E17FB6DE19BF368700914D13 /* btnSessionM.png */,
-				E17FB6DF19BF368700914D13 /* btnSessionM_lg.png */,
-				E17FB6E019BF368700914D13 /* GiftBox_20x20.png */,
-				E17FB6E119BF368700914D13 /* M_Logo_20x20.png */,
-				E17FB6E219BF368700914D13 /* Trophy_20x20.png */,
+				998346F41B5B0E2D00876A04 /* btnSessionM.png */,
+				998346F51B5B0E2D00876A04 /* btnSessionM_lg.png */,
+				998346F61B5B0E2D00876A04 /* GiftBox_20x20.png */,
+				998346F71B5B0E2D00876A04 /* M_Logo_20x20.png */,
+				998346F81B5B0E2D00876A04 /* Trophy_20x20.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -297,14 +305,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E17FB6E619BF368700914D13 /* GiftBox_20x20.png in Resources */,
+				998346FC1B5B0E2D00876A04 /* GiftBox_20x20.png in Resources */,
 				832767C31944DD8D0028F888 /* Images.xcassets in Resources */,
 				832767BA1944DD8D0028F888 /* GameScene.sks in Resources */,
-				E17FB6E519BF368700914D13 /* btnSessionM_lg.png in Resources */,
-				E17FB6E819BF368700914D13 /* Trophy_20x20.png in Resources */,
-				E17FB6E719BF368700914D13 /* M_Logo_20x20.png in Resources */,
+				998346FB1B5B0E2D00876A04 /* btnSessionM_lg.png in Resources */,
+				998346FE1B5B0E2D00876A04 /* Trophy_20x20.png in Resources */,
+				998346FD1B5B0E2D00876A04 /* M_Logo_20x20.png in Resources */,
 				832767C11944DD8D0028F888 /* Main.storyboard in Resources */,
-				E17FB6E419BF368700914D13 /* btnSessionM.png in Resources */,
+				998346FA1B5B0E2D00876A04 /* btnSessionM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,8 +460,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/ccooper/Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK",
-					"/Users/Chris/Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK",
+					"$(PROJECT_DIR)/SwiftSKTest/SessionM-SDK",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftSKTest/SessionM-SDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -476,8 +486,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/ccooper/Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK",
-					"/Users/Chris/Downloads/SessionM_iOS_v1.11.3_Release/SessionM-SDK",
+					"$(PROJECT_DIR)/SwiftSKTest/SessionM-SDK",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftSKTest/SessionM-SDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

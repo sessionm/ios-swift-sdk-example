@@ -17,7 +17,7 @@
  @property presentingController
  @discussion UIViewController object to use as presenting controller for portal view controller.
  */
-@property(nonatomic, retain) UIViewController *presentingController;
+@property(nonatomic, strong) UIViewController *presentingController;
 
 /*!
  Returns new instance.

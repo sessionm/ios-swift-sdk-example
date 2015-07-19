@@ -19,7 +19,7 @@ class GameScene: SKScene {
     var achievementEarned = false;
     var achievementDisplayed = false;
     
-    var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate;
+    var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate;
     
     var achievementData = SMAchievementData();
     
@@ -34,7 +34,7 @@ class GameScene: SKScene {
         
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         /* Called when a touch begins */
         
         for touch: AnyObject in touches {
@@ -48,7 +48,7 @@ class GameScene: SKScene {
         }
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent)
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
@@ -93,13 +93,13 @@ class GameScene: SKScene {
                     //My own method that returns the achievement data if it exists.
                     //Note that you must cast your AppDelegate before this step if you choose to do it this way
                     //It is a class variable that is called like this var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate;
-                    if ((SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)()?) != nil)
+                    if ((SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)()) != nil)
                     {
                         // Achievement data comes from didUpdateUnclaimedAchievement achievement delgate method from the SessionM class.
                         var achievementData: SMAchievementData? = SwiftSKTest.AppDelegate.getCurrentAchievement(self.appDelegate)();
                         
                         //validate achievement data again just in case, probably don't have to do this
-                        if ((achievementData?) != nil)
+                        if ((achievementData) != nil)
                         {
                             //instantiate native achievement class and pass it the achievement data
                             var nativeAchievementAlert: SMAlertViewCustomAchievement = SMAlertViewCustomAchievement(theData: achievementData!);

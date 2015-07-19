@@ -58,7 +58,7 @@
  @property delegate
  @abstract SMActivityViewControllerDelegate object.
  */
-@property(nonatomic, assign) id<SMActivityViewControllerDelegate> delegate;
+@property(nonatomic, weak) id<SMActivityViewControllerDelegate> delegate;
 /*!
  @property activityType
  @abstract Activity type. By default, it is set to @link SMActivityTypePortal @/link.
@@ -73,10 +73,13 @@
  */
 + (SMActivityViewController *)newInstance __attribute__((deprecated));
 /*!
- @abstract Returns new activity controller object with specified type or nil if content for specified type not available.
+ @abstract Returns new activity controller object with specified type or nil if content for specified type not available. Activity will be presented in the specified navigation controller.
  @result SMActivityViewController object.
  */
 + (SMActivityViewController *)newInstanceWithActivityType:(SMActivityType)type;
++ (SMActivityViewController *)newInstanceWithActivityType:(SMActivityType)type inNavigationController:(UINavigationController *)navigationController;
++ (SMActivityViewController *)newInstanceWithActivityType:(SMActivityType)type inTabBarController:(UITabBarController *)tabBarController;
++ (SMActivityViewController *)newInstanceWithActivityType:(SMActivityType)type inNavigationController:(UINavigationController *)navigationController inTabBarController:(UITabBarController*)tabBarController;
 
 
 @end

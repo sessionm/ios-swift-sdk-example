@@ -2,15 +2,17 @@
 //  SessionM.h
 //  session M
 //
-//  Copyright 2011 session M. All rights reserved.
+//  Copyright 2014 session M. All rights reserved.
 //
 
 #ifndef __SESSIONM__
 #define __SESSIONM__
-#define __SESSIONM_SDK_VERSION__ @"1.11.7"
+#define __SESSIONM_SDK_VERSION__ @"1.14.6"
+#define __SESSIONM_SDK_MIN_SUPPORTED_DEVICE_VERSION__ 7.0f
 
 #import <UIKit/UIKit.h>
 #import "SMAchievementData.h"
+#import "SMLoaderController.h"
 
 
 /*!
@@ -26,6 +28,19 @@
  @abstract Logs action.
  */
 #define SMAction(action) [[SessionM sharedInstance] logAction:action];
+
+/*!
+ @defined SM_SetServiceRegion_Japan
+ @abstract Sets the service region to Japan.
+ */
+#define SM_SetServiceRegion_Japan() [SessionM setServiceRegion:SMServiceRegionJapan];
+
+/*!
+ @defined SM_SetServiceRegion_USA
+ @abstract Sets the service region to USA.
+ */
+#define SM_SetServiceRegion_USA() [SessionM setServiceRegion:SMServiceRegionUSA];
+
 
 
 
@@ -115,6 +130,65 @@ typedef enum SMActivityAutoDismissStyle {
 
 
 /*!
+ @typedef SMServiceRegion
+ @abstract SessionM service region.
+ */
+typedef enum SMServiceRegion {
+    /*! Value before service region is set or session is started */
+    SMServiceRegionUnknown,
+    /*! Japan service region */
+    SMServiceRegionJapan,
+    /*! United States service region (default value if service region is not set before starting session) */
+    SMServiceRegionUSA
+} SMServiceRegion;
+
+
+
+/*!
+ @typedef SMUserRegistrationResultType
+ @abstract Result of most recent attempt to log a user in or out.
+ */
+typedef enum SMUserRegistrationResultType {
+    /*! Service is unavailable or result is not yet available. This is the default value. */
+    SMUserRegistrationResultTypeUnavailable,
+    /*! Successfully processed user registration request. */
+    SMUserRegistrationResultTypeSuccess,
+    /*! Received network or processing error response from server for user registration request. */
+    SMUserRegistrationResultTypeFailure,
+    /*! Received error response from server for user registration request.
+     @deprecated This value is deprecated. See @link SMUserRegistrationResultTypeFailure @/link.
+     */
+    SMUserRegistrationResultTypeServerFailure __attribute__((deprecated)),
+    /*! Received error when processing the server response. Possible processing errors include receiving a blank password or an unknown email.
+     @deprecated This value is deprecated. See @link SMUserRegistrationResultTypeFailure @/link.
+     */
+    SMUserRegistrationResultTypeProcessingFailure __attribute__((deprecated))
+} SMUserRegistrationResultType;
+
+
+
+/*!
+ @typedef SMPortalPage
+ @abstract Page in portal that can be linked to from app.
+ */
+typedef enum SMPortalPage {
+    /*! Portal home feed */
+    SMPortalPageHome,
+    /*! User's achievements list */
+    SMPortalPageAchievements,
+    /*! Featured sweepstakes, rewards, and charities */
+    SMPortalPageFeatured,
+    /*! Sweepstakes page */
+    SMPortalPageSweepstakes,
+    /*! Rewards page */
+    SMPortalPageRewards,
+    /*! Charities page */
+    SMPortalPageCharities
+} SMPortalPage;
+
+
+
+/*!
  @const SessionMErrorDomain
  @abstract SessionM error domain.
  */
@@ -164,6 +238,22 @@ typedef enum SessionMSessionErrorType {
  @param error Error object.
  */
 - (void)sessionM:(SessionM *)sessionM didFailWithError:(NSError *)error;
+/*!
+ @abstract Notifies that the @link userRegistrationResult @/link property has been updated.
+ @discussion This method is called after the server response for an enroll, log in or log out request is processed. These requests can made by calling the @link enrollWithData: @/link , @link logInUserWithEmail:password: @/link and @link logOutUser @/link methods.
+ @param sessionM SessionM service object.
+ @param result SMUserRegistrationResultType the new value for the <code>userRegistrationResult</code> property.
+ @deprecated This method is deprecated. Use @link sessionM:didUpdateUserRegistrationResult:errorMessages: @/link instead.
+ */
+- (void)sessionM:(SessionM *)sessionM didUpdateUserRegistrationResult:(SMUserRegistrationResultType)result;
+/*!
+ @abstract Notifies that the @link userRegistrationResult @/link property has been updated.
+ @discussion This method is called after the server response for a sign up, sign in or sign out request is processed. These requests can made by calling the @link enrollWithData: @/link, @link enrollWithEmail:YOB: @/link, @link signUpUserWithData: @/link, @link logInUserWithEmail:password: @/link and @link logOutUser @/link methods.
+ @param sessionM SessionM service object.
+ @param result SMUserRegistrationResultType the new value for the <code>userRegistrationResult</code> property.
+ @param errorMessages NSArray of error messages (value will be nil for successful registration).
+ */
+- (void)sessionM:(SessionM *)sessionM didUpdateUserRegistrationResult:(SMUserRegistrationResultType)result errorMessages:(NSArray *)errorMessages;
 /*!
  @abstract Indicates if newly earned achievement UI activity should be presented.
  @discussion This method is called when achievement is earned and will occur when application calls @link logAction: @/link or starts a session.
@@ -413,12 +503,17 @@ typedef struct SMLocationCoordinate2D {
  @property delegate
  @abstract SessionMDelegate object.
  */
-@property(nonatomic, assign) id<SessionMDelegate> delegate;
+@property(nonatomic, weak) id<SessionMDelegate> delegate;
 /*!
  @property sessionState
  @abstract SessionM state.
  */
 @property(nonatomic,readonly) SessionMState sessionState;
+/*!
+ @property sessionID
+ @abstract The current session ID. Returns nil if the session is not online.
+ */
+@property(nonatomic, readonly) NSString *sessionID;
 /*!
  @property currentActivity
  @abstract Current UI activity.
@@ -435,7 +530,7 @@ typedef struct SMLocationCoordinate2D {
  */
 @property(nonatomic) SMLogLevel logLevel;
 /*!
- @property logCategory
+ @property logCategories
  @abstract Log category.
  */
 @property(nonatomic) int logCategories;
@@ -449,7 +544,7 @@ typedef struct SMLocationCoordinate2D {
  @property inAppPromotionTile
  @abstract in-app promotion tile.
  */
-@property(nonatomic, readwrite) NSDictionary *inAppPromotionTile;
+@property(nonatomic, strong, readwrite) NSDictionary *inAppPromotionTile;
 /*!
  @property locationCoordinate
  @abstract Location coordinate info.
@@ -461,13 +556,18 @@ typedef struct SMLocationCoordinate2D {
  */
 @property(nonatomic, readonly) SMUser *user;
 /*!
+ @property userRegistrationResult
+ @abstract The result of the most recent attempt to enroll, log in, or log out a user. Note: should be accessed in sessionM:didUpdateUserRegistrationResult: delegate.
+ */
+@property(nonatomic, readonly) SMUserRegistrationResultType userRegistrationResult;
+/*!
  @property operationQueue
  @abstract Operation queue to use to perform SDK work on.
  @discussion By default SDK creates internal operation queue to perform its work on. Application can use this property to supply its own operation queue object. This can be useful in cases when application allocates
  a queue to perform certain types of background operations by its own components or 3rd party SDK in order to manage resources more efficiently. SessionM SDK sets maxConcurrentOperationCount property of supplied operation queue to 1. 
  Note that setting this property only takes effect when SDK is in SessionMStateStopped state.
  */
-@property(nonatomic, retain) NSOperationQueue *operationQueue;
+@property(nonatomic, strong) NSOperationQueue *operationQueue;
 /*!
  @property unclaimedAchievement
  @abstract Last earned unclaimed achievement object or nil if not available.  
@@ -479,7 +579,49 @@ typedef struct SMLocationCoordinate2D {
  */
 @property(nonatomic, readonly) NSInteger sessionCount;
 /*!
- @abstract Returns singleton SessionM service instance. If the server is not supported on the current platform (as indicated by isSupportedPlatform method) nil is returned. 
+ @property rewards
+ @abstract <h3>Note: this is an advanced feauture subject to change</h3><br />
+ An array of NSDictionary objects; the rewards that can be redeemed through the user portal<br />
+
+ <ul><h5>Key - Value type:</h5>
+    <li>type - NSString</li>
+    <li>id - NSNumber</li>
+    <li>name - NSString</li>
+    <li>points - NSNumber</li>
+    <li>image - NSString</li>
+    <li>url - NSString</li>
+ </ul>
+ */
+@property(nonatomic, readonly) NSArray *rewards;
+/*!
+ @property statusBarBackgroundColor
+ @abstract Color to put behind the status bar. Used when portal is in UITabBarController.
+ */
+@property(nonatomic,strong) UIColor *statusBarBackgroundColor;
+/*!
+ @property pluginSDK
+ @abstract the name of the plug-in SDK
+ */
+@property(nonatomic, strong) NSString *pluginSDK;
+/*!
+ @property pluginSDKVersion
+ @abstract the version number of the plug-in SDK being used
+ */
+@property(nonatomic, strong) NSString *pluginSDKVersion;
+/*!
+ @property shouldAutoUpdateAchievementsList
+ @abstract determines whether achievement list is updated automatically when user's unclaimed achievement count has changed, or only when requested by calling updateAchievementsList (default)
+ */
+@property(nonatomic) BOOL shouldAutoUpdateAchievementsList;
+/*!
+ @property currentLoaderController
+ @abstract Current view controller presented when loading the portal.
+ @discussion This property can be used to access the view that is displayed when loading portal content. Set the property using @link addCustomLoaderController: @/link to use a custom load screen. If @link removeCustomLoader @/link is called or if this property is not set manually, the standard load screen will be used.
+ */
+@property(nonatomic, strong, readonly) SMLoaderController *currentLoaderController;
+
+/*!
+ @abstract Returns singleton SessionM service instance. If the server is not supported on the current platform (as indicated by isSupportedPlatform method) nil is returned.
  @result SessionM service object.
  */
 + (SessionM *)sharedInstance;
@@ -490,6 +632,11 @@ typedef struct SMLocationCoordinate2D {
  @result Boolean indicating if platform is supported.
  */
 + (BOOL)isSupportedPlatform;
+/*!
+ @abstract Sets the service region (defaults to @link SMServiceRegionUSA @/link if not set before session is started).
+ @discussion Use this method or call @link SM_SetServiceRegion_Japan() @/link or @link SM_SetServiceRegion_USA() @/link before calling @link startSessionWithAppID: @/link to set the service region. Once set, the service region cannot be changed.
+ */
++ (void)setServiceRegion:(SMServiceRegion)region;
 /*!
  @abstract Starts session with specified application ID. 
  @discussion This method is executed asynchronously with outcome communicated via @link sessionM:didTransitionToState: @/link or @link sessionM:didFailWithError: @/link delegate callbacks. 
@@ -510,6 +657,7 @@ typedef struct SMLocationCoordinate2D {
  Activity is presented using UIViewController or UIView as determined by Session M service. If activity has already been presented at a time of this call this method does nothing.
  If an activity is already presented this method cancels new activity display, notifies application via @link sessionM:activityUnavailable: @/link and returns. 
  When new activity does get presented the delegate methods @link sessionM:willPresentActivity: @/link and @link sessionM:didPresentActivity: @/link will be invoked if implemented.
+ If this method is not called from the main thread, it will return NO and the activity will not be presented.
  @param type Activity type.
  @result Boolean indicating if activity will be presented, false - otherwise
  */
@@ -540,16 +688,30 @@ typedef struct SMLocationCoordinate2D {
  */
 - (void)setMetaData:(NSString *)data forKey:(NSString *)key;
 /*!
+ @abstract Sets the SessionM plug-in SDK name and version number.
+ @discussion This method should be called from the plug-in SDK before a session is started.
+ @param sdk The plug-in SDK name
+ @param version The plug-in SDK version number
+ */
+- (void)setPluginSDK:(NSString *)sdk version:(NSString *)version;
+/*!
  @abstract Handles application launch URL.
- @discussion Application can be configured to launch SessionM portal using application URL scheme mechanism. In order to enable this follow the steps:
+ @discussion Your application can be configured to launch the portal using the application URL scheme mechanism. In order to enable this feature, follow the steps below:
  <ol>
- <li>Add to your application configuration plist the URL scheme in the form 'sessionmYourAppId://portal' where YourAppId is your application ID</li>
- <li>In application delegate method @link application:openURL:sourceApplication:annotation: @/link add a call handleURL to SessionM instance and pass the URL the application delegate call</li>
+ <li>Add to your application configuration plist the URL scheme 'sessionmYourAppId' where YourAppId is your application ID as listed in the SessionM developer portal</li>
+ <li>In the application delegate method @link application:openURL:sourceApplication:annotation: @/link add a call to @link handleURL: @/link, passing the URL from the application delegate call. Alternatively, handleURL can be called directly without implementing this delegate.</li>
  </ol>
  @param url App launch URL.
- @result Boolean indicating if URL was handled by SessionM
+ @result Boolean indicating whether the URL was handled by the SDK.
  */
 - (BOOL)handleURL:(NSURL *)url;
+/*!
+ @abstract Opens the deep link to the specified page in the portal.
+ @discussion Use this method to deep link to one of the pages listed under @link SMPortalPage @/link.
+ @param page Portal page to open.
+ @result Boolean indicating whether the URL was handled by the SDK.
+ */
+- (BOOL)openURLForPortalPage:(SMPortalPage)page;
 
 
 /*!
@@ -561,6 +723,77 @@ typedef struct SMLocationCoordinate2D {
  @deprecated This method is deprecated. 
  */
 - (void)logError:(NSString *)errorName message:(NSString *)message exception:(NSException *)exception __attribute__((deprecated));
+
+/*!
+ @abstract <h3>Note: this is an advanced feauture subject to change</h3><br />
+ Enrolls user into SessionM rewards program with specified user data.
+ @discussion This method should be used by a developer to require a user to register for the SessionM rewards program. The user should already have an account for the developer's service. If the user does not already have such an account, use @link signUpUserWithData: @/link instead. Once the user is succesfully registered, a verification email will be sent to the user so they can set a password for their account.
+ @param userData The userData to send to the server when enrolling the user.<br />
+ <ul><h5>Keys:</h5>
+    <li>@link SMUserDataEmailKey @/link - User's email (required)</li>
+    <li>@link SMUserDataYOBKey @/link - User's year of birth (optional - should be in the format XXXX (e.g. 1976). Years of birth that put the user's age below 14 or above 120 years old are considered invalid.)</li>
+    <li>@link SMUserDataGenderKey @/link - User's gender (optional - accepts "m/f", "male/female". Case insensitive.)</li>
+    <li>@link SMUserDataProfileImageURLKey @/link - URL to user's profile image (optional)</li>
+    <li>@link SMUserDataFirstNameKey @/link - User's first name (optional)</li>
+    <li>@link SMUserDataLastNameKey @/link - User's last name (optional)</li>
+    <li>@link SMUserDataZipcodeKey @/link - User's zipcode (optional)</li>
+ </ul>
+ @result BOOL Returns NO if an input is invalid or session is not online, and YES otherwise.
+ */
+- (BOOL)enrollWithData:(NSDictionary *)userData;
+
+/*!
+ @abstract <h3>Note: this is an advanced feauture subject to change</h3><br />
+ Enrolls user into SessionM rewards program with specified email and year of birth.
+ @discussion This method should be used by a developer to require a user to register for the SessionM rewards program. The user should already have an account for the developer's service. If the user does not already have such an account, use @link signUpUserWithData: @/link instead. Once the user is succesfully registered, a verification email will be sent to the user so they can set a password for their account.
+ @param email User's email (required).
+ @param yob User's year of birth (optional - should be in the format XXXX (e.g. 1976). Years of birth that put the user's age below 14 or above 120 years old are considered invalid.).
+ @result BOOL Returns NO if an input is invalid or session is not online, and YES otherwise.
+ */
+- (BOOL)enrollWithEmail:(NSString *)email YOB:(NSString *)yob;
+/*!
+ @abstract Signs user up for an account in the SessionM rewards program with specified user data.
+ @discussion This method should be used by a developer to require a user to register for the SessionM rewards program. The user should not already have an account for the developer's service. If the user does have such an account, use @link enrollWithData: @/link or @link enrollWithEmail:YOB: @/link instead.
+ @param userData The userData to send to the server when creating an account for the user.<br />
+ <ul><h5>Keys:</h5>
+ <li>@link SMUserDataEmailKey @/link - User's email (required)</li>
+ <li>@link SMUserDataPasswordKey @/link - User's password (required)</li>
+ <li>@link SMUserDataBirthYearKey @/link - User's year of birth (required - should be in the format XXXX (e.g. 1976). Years of birth that put the user's age below 14 or above 120 years old are considered invalid.)</li>
+ <li>@link SMUserDataGenderKey @/link - User's gender (required - accepts "m/f", "male/female". Case insensitive.)</li>
+ <li>@link SMUserDataZipcodeKey @/link - User's zipcode (optional)</li>
+ </ul>
+ @result BOOL Returns NO if an input is invalid or if session has not been authenticated, and YES otherwise.
+ */
+- (BOOL)signUpUserWithData:(NSDictionary *)userData;
+/*!
+ @abstract Logs in the user associated with the provided email.
+ @discussion Can be used for user accounts created with @link signUpUserWithData: @/link, @/link enrollWithData: @/link or @link enrollWithEmail:YOB: @/link.
+ @param email User's email.
+ @param password User's password.
+ @result BOOL Returns NO if an input is invalid or if session has not been authenticated, and YES otherwise.
+ */
+- (BOOL)logInUserWithEmail:(NSString *)email password:(NSString *)password;
+/*!
+ @abstract Logs out the current user.
+ @discussion Can be used for user accounts created with @link signUpUserWithData: @/link, @/link enrollWithData: @/link or @link enrollWithEmail:YOB: @/link.
+ */
+- (void)logOutUser;
+/*!
+ @abstract Updates user's achievementsList property.
+ @discussion This method has no effect unless shouldAutoUpdateAchievementsList is set to NO (the default value).
+ */
+- (void)updateAchievementsList;
+/*!
+ @abstract Sets the specified controller as the value of @link currentLoaderController @/link.
+ @discussion Use this method to display a custom load screen when presenting portal content. The developer should define a class that inherits from @link SMLoaderController @/link, and call this method with an instance of that class. If this method is called multiple times, the controller specified in the most recent call will be used.
+ @param controller The developer's custom view controller that will display the portal load screen.
+ */
+- (void)addCustomLoaderController:(SMLoaderController *)controller;
+/*!
+ @abstract Sets the value of @link currentLoaderController @/link to the standard loader controller.
+ @discussion Use this method to return to using the standard load screen after calling @link addCustomLoaderController: @/link.
+ */
+- (void)removeCustomLoader;
 
 @end
 
@@ -614,12 +847,13 @@ typedef enum SMAchievementDismissType {
  @property data
  @abstract Achievement data object.
  */
-@property(nonatomic, retain, readonly) SMAchievementData *data;
+@property(nonatomic, strong, readonly) SMAchievementData *data;
 /*!
  @abstract Initializes achievement activity object with achievement data.
  @param data Custom achievement data object.
  */
-- (id)initWithAchievmentData:(SMAchievementData *)data;
+- (id)initWithAchievmentData:(SMAchievementData *)data __attribute__((deprecated));
+- (id)initWithAchievementData:(SMAchievementData *)data;
 /*!
  @abstract Notifies that achievement alert has been presented.
  @result Boolean indicating if invocation was successful, YES, or not - NO.
@@ -651,6 +885,16 @@ typedef enum SMAchievementDismissType {
  */
 @property(nonatomic) BOOL isOptedOut;
 /*!
+ @property isLoggedIn
+ @abstract Returns user's logged in status. This value is set to true for a registered user who has also verified their password for the current session through the portal - or when either @link signUpUserWithData: @/link or @link logInUserWithEmail:password: @/link is called.
+ */
+@property(nonatomic, readonly) BOOL isLoggedIn;
+/*!
+ @property isRegistered
+ @abstract Returns user's registered status. This value is set to true when the account corresponds to a registered user. The user can register for an account through the portal - or when either @link enrollWithData: @/link, @link enrollWithEmail:YOB: @/link, @link signUpUserWithData: @/link or @link logInUserWithEmail:password: @/link is called.
+ */
+@property(nonatomic, readonly) BOOL isRegistered;
+/*!
  @property pointBalance
  @abstract Returns user's current points balance.
  */
@@ -669,7 +913,12 @@ typedef enum SMAchievementDismissType {
  @property achievements
  @abstract Returns an array of @link SMAchievementData @/link objects.
  */
-@property(nonatomic, retain, readonly) NSArray *achievements;
+@property(nonatomic, strong, readonly) NSArray *achievements;
+/*!
+ @property achievementsList
+ @abstract Returns an array of SMAchievementData objects representing the user's achievement forecast
+ */
+@property(nonatomic, strong, readonly) NSArray *achievementsList;
 
 @end
 
@@ -721,6 +970,63 @@ extern NSString *const SMUserActionPageNameKey;
  @abstract Reward name key.
  */
 extern NSString *const SMUserActionRewardNameKey;
+
+
+
+/*!
+ @group User data dictionary keys
+ */
+
+/*!
+ @const SMUserDataEmailKey
+ @abstract Email key.
+ */
+extern NSString *const SMUserDataEmailKey;
+/*!
+ @const SMUserDataPasswordKey
+ @abstract Password key.
+ */
+extern NSString *const SMUserDataPasswordKey;
+/*!
+ @const SMUserDataYOBKey
+ @abstract Year of birth key.
+ */
+extern NSString *const SMUserDataYOBKey;
+/*!
+ @const SMUserDataBirthYearKey
+ @abstract Year of birth key.
+ */
+extern NSString *const SMUserDataBirthYearKey;
+/*!
+ @const SMUserDataAgeKey
+ @abstract Age key.
+ */
+extern NSString *const SMUserDataAgeKey;
+/*!
+ @const SMUserDataGenderKey
+ @abstract Gender key.
+ */
+extern NSString *const SMUserDataGenderKey;
+/*!
+ @const SMUserDataProfileImageURLKey
+ @abstract Profile image URL key.
+ */
+extern NSString *const SMUserDataProfileImageURLKey;
+/*!
+ @const SMUserDataFirstNameKey
+ @abstract First name key.
+ */
+extern NSString *const SMUserDataFirstNameKey;
+/*!
+ @const SMUserDataLastNameKey
+ @abstract Last name key.
+ */
+extern NSString *const SMUserDataLastNameKey;
+/*!
+ @const SMUserDataZipcodeKey
+ @abstract Zipcode key.
+ */
+extern NSString *const SMUserDataZipcodeKey;
 
 
 #endif /* __SESSIONM__ */

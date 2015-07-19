@@ -16,7 +16,7 @@ class SMAlertViewCustomAchievement : SMAchievementActivity, UIAlertViewDelegate
     
     //init the superclass
     init(theData:SMAchievementData){
-        super.init(achievmentData:theData);
+        super.init(achievementData:theData);
         println("SMAlertViewCustom init");
     }
     // presents the alert view
@@ -38,13 +38,13 @@ class SMAlertViewCustomAchievement : SMAchievementActivity, UIAlertViewDelegate
         
         self.alertView = aView;
         //optionals must be checked before they are unwrapped
-        if ((self.alertView?) != nil){
+        if ((self.alertView) != nil){
         self.alertView!.show();
             
         }
     }
     func dismiss(){
-        if ((self.alertView?) != nil)
+        if ((self.alertView) != nil)
         {
             self.alertView!.dismissWithClickedButtonIndex(0, animated: true);
         }
