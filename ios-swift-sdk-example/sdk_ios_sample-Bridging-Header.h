@@ -1,6 +1,6 @@
 //
-//  sdk-ios-sample-Bridging-Header.h
-//  sdk-ios-sample
+//  ios-swift-sdk-example-Bridging-Header.h
+//  ios-swift-sdk-example
 //
 //  Copyright © 2016 SessionM. All rights reserved.
 //
