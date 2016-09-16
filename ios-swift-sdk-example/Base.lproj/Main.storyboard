@@ -9,7 +9,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="gUS-MC-aWN">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5kS-Um-o5S" customClass="TabBarViewController" customModule="sdk_ios_sample" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5kS-Um-o5S" customClass="TabBarViewController" customModule="ios_swift_sdk_example" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="iDe-cV-1Nh">
@@ -30,7 +30,7 @@
         <!--Demo View Controller-->
         <scene sceneID="4pe-Bq-3uR">
             <objects>
-                <viewController id="yZp-Im-eez" customClass="DemoViewController" customModule="sdk_ios_sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yZp-Im-eez" customClass="DemoViewController" customModule="ios_swift_sdk_example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rmq-dv-qFv"/>
                         <viewControllerLayoutGuide type="bottom" id="BrZ-Ix-6Vc"/>
@@ -327,7 +327,7 @@
         <!--Achievement View Controller-->
         <scene sceneID="97r-z2-lPY">
             <objects>
-                <viewController storyboardIdentifier="CustomAchievement" id="zJG-YG-H6h" customClass="AchievementViewController" customModule="sdk_ios_sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomAchievement" id="zJG-YG-H6h" customClass="AchievementViewController" customModule="ios_swift_sdk_example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xz6-me-m0x"/>
                         <viewControllerLayoutGuide type="bottom" id="Rqo-qp-yYn"/>
@@ -435,7 +435,7 @@
         <!--Demo Loader Controller-->
         <scene sceneID="dJe-fN-IfT">
             <objects>
-                <viewController storyboardIdentifier="Demo Loader" id="bqW-Jl-Ifi" customClass="DemoLoaderController" customModule="sdk_ios_sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Demo Loader" id="bqW-Jl-Ifi" customClass="DemoLoaderController" customModule="ios_swift_sdk_example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aCu-Qq-XSc"/>
                         <viewControllerLayoutGuide type="bottom" id="erE-Vs-t8x"/>
@@ -562,13 +562,13 @@
         <!--Achievement-->
         <scene sceneID="RoN-eM-1mf">
             <objects>
-                <tableViewController title="Achievement" extendedLayoutIncludesOpaqueBars="YES" id="GRQ-Jv-fEC" customClass="AchievementsTableViewController" customModule="sdk_ios_sample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Achievement" extendedLayoutIncludesOpaqueBars="YES" id="GRQ-Jv-fEC" customClass="AchievementsTableViewController" customModule="ios_swift_sdk_example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="250" sectionHeaderHeight="28" sectionFooterHeight="28" id="G0I-my-ViA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Achievement Cell" id="64X-wQ-SqY" customClass="AchievementsTableViewCell" customModule="sdk_ios_sample" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Achievement Cell" id="64X-wQ-SqY" customClass="AchievementsTableViewCell" customModule="ios_swift_sdk_example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="48" width="600" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="64X-wQ-SqY" id="rmx-ps-mnU">
@@ -738,7 +738,7 @@
         <!--Geo Location-->
         <scene sceneID="0GM-LN-Zt2">
             <objects>
-                <viewController id="Ulj-Ve-21r" userLabel="Geo Location" customClass="GeoLocationViewController" customModule="sdk_ios_sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ulj-Ve-21r" userLabel="Geo Location" customClass="GeoLocationViewController" customModule="ios_swift_sdk_example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qhe-KO-ttq"/>
                         <viewControllerLayoutGuide type="bottom" id="e1S-Jm-aV4"/>
@@ -765,7 +765,7 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="Geo Fence ">
                                                         <attributes>
-                                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <font key="NSFont" size="16" name="Menlo-Regular"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             <integer key="NSUnderline" value="1"/>
@@ -777,19 +777,19 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZM-gY-m2o" userLabel="event">
                                                 <rect key="frame" x="0.0" y="19" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Not Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSQ-dz-QNt" userLabel="coordinates">
                                                 <rect key="frame" x="0.0" y="19" width="100" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycw-uF-DAd" userLabel="radius">
                                                 <rect key="frame" x="0.0" y="40" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -822,7 +822,7 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="Location">
                                                         <attributes>
-                                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <font key="NSFont" size="16" name="Menlo-Regular"/>
                                                             <integer key="NSUnderline" value="1"/>
                                                         </attributes>
@@ -833,7 +833,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Not available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-F4-FWV" userLabel="coordinates">
                                                 <rect key="frame" x="0.0" y="19" width="540" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -863,14 +863,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Geo Locations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP4-B5-1WI">
                                 <rect key="frame" x="20" y="185" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R8z-s4-4O1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R8z-s4-4O1">
                                 <rect key="frame" x="20" y="206" width="560" height="337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Location Cell" id="t8S-o7-Jq4" customClass="LocationCell" customModule="sdk_ios_sample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Location Cell" id="t8S-o7-Jq4" customClass="LocationCell" customModule="ios_swift_sdk_example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t8S-o7-Jq4" id="Z95-JO-te7">
@@ -880,13 +880,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdB-pr-CBq" userLabel="event">
                                                     <rect key="frame" x="8" y="8" width="544" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fv-0g-gQy" userLabel="coordinates">
                                                     <rect key="frame" x="8" y="45" width="544" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -970,7 +970,7 @@
         <!--User-->
         <scene sceneID="BWn-jv-rPw">
             <objects>
-                <viewController title="User" id="MSz-fd-Xb8" customClass="UserViewController" customModule="sdk_ios_sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="User" id="MSz-fd-Xb8" customClass="UserViewController" customModule="ios_swift_sdk_example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bcg-f5-5Lz"/>
                         <viewControllerLayoutGuide type="bottom" id="Zpg-fg-95F"/>
@@ -1090,7 +1090,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User is Signed in, and can be used." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gf-gf-WfE" userLabel="Log Message">
                                         <rect key="frame" x="0.0" y="214" width="560" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0OW-Lt-n8d" userLabel="Logout Button">
@@ -1177,13 +1177,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opt In:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrN-ew-lcV" userLabel="Opt In:">
                                 <rect key="frame" x="491" y="495" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="??" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32r-lY-iIx" userLabel="optIn">
                                 <rect key="frame" x="553" y="495" width="17" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

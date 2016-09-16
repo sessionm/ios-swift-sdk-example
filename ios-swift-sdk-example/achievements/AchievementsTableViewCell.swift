@@ -1,6 +1,6 @@
 //
 //  AchievementsTableViewCell.swift
-//  sdk-ios-sample
+//  ios-swift-sdk-example
 //
 //  Copyright © 2016 SessionM. All rights reserved.
 //
