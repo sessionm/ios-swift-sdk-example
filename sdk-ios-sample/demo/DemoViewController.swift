@@ -9,7 +9,7 @@ import UIKit
 
 public class DemoViewController : UIViewController, UITextFieldDelegate, SessionMDelegate {
 
-    let ApiKey = "abd86968d39cc96ff90ffc3164d5b9030d3d2bfd";
+    let ApiKey = "af114e255e773ac37b54c3c5bbc6b3b519c25717";
 
     let sessionM = SessionM.sharedInstance();
 
