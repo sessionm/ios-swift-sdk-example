@@ -175,8 +175,8 @@ public class DemoViewController : UIViewController, UITextFieldDelegate, Session
 
         isSignedInLabel.text = user.isLoggedIn ? "Yes" : "No";
         isRegisteredLabel.text = user.isRegistered ? "Yes" : "No";
-        customAchievementButton.enabled = user.isRegistered;
-        earnAchievementButton.enabled = user.isRegistered;
+        customAchievementButton.enabled = sessionM.sessionState != .Stopped;
+        earnAchievementButton.enabled = sessionM.sessionState != .Stopped;
 
         showState(sessionM, state: sessionM.sessionState);
     }

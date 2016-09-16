@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        SessionM.sharedInstance().logLevel = .Debug;
+        // SessionM.sharedInstance().logLevel = .Debug;
 
         return true
     }
