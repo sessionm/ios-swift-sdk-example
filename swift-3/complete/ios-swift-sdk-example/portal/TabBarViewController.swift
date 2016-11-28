@@ -16,7 +16,7 @@ class TabBarViewController : UITabBarController, UITabBarControllerDelegate {
         self.delegate = self;
     }
 
-    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         sessionM.dismissActivity();
         return true;
     }

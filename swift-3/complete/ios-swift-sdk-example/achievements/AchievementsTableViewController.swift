@@ -9,37 +9,37 @@ import UIKit
 
 class AchievementsTableViewController: UITableViewController {
 
-    var achievements = [];
-    var inWorkAchievements = [];
-    var claimableAchievements = [];
+    var achievements : [SMAchievementData] = [];
+    var inWorkAchievements : [SMAchievementData] = [];
+    var claimableAchievements : [SMAchievementData] = [];
 
-    override func prefersStatusBarHidden() -> Bool { return true; }
+    override var prefersStatusBarHidden : Bool { return true; }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         achievements = SessionM.sharedInstance().user.achievements;
         claimableAchievements    = SessionM.sharedInstance().user.claimableAchievements;
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ["Claimable", "Possible"][section];
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return [claimableAchievements.count, achievements.count][section];
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Achievement Cell", forIndexPath: indexPath) as! AchievementsTableViewCell;
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Achievement Cell", for: indexPath) as! AchievementsTableViewCell;
 
         let list = [ claimableAchievements, achievements][indexPath.section];
-        let achieve = list[indexPath.row] as! SMAchievementData;
+        let achieve = list[indexPath.row];
 
         cell.nameLabel.text = achieve.name;
         cell.messageLabel.text = achieve.message;
@@ -65,12 +65,12 @@ class AchievementsTableViewController: UITableViewController {
     }
 
     // Not optimal, but gets URL load off UI Thread
-    func loadFromUrl(url : String, callback : (UIImage? -> Void)) {
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-        dispatch_async(queue) {
-            if let imageData = NSData(contentsOfURL: NSURL(string: url)!) {
+    func loadFromUrl(_ url : String, callback : @escaping ((UIImage?) -> Void)) {
+        let queue = DispatchQueue.global(qos: .userInteractive);
+        queue.async {
+            if let imageData = try? Data(contentsOf: URL(string: url)!) {
                 let image = UIImage(data: imageData);
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     callback(image);
                 });
             }

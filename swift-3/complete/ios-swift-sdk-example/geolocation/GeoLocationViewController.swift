@@ -39,25 +39,25 @@ class GeoLocationViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad();
 
-        let nCenter = NSNotificationCenter.defaultCenter();
+        let nCenter = NotificationCenter.default;
 
         // Issue
-        nCenter.addObserver(self, selector:#selector(concern(_:)), name: SMLocationManagerLocationServicesDisabled, object: nil);
-        nCenter.addObserver(self, selector:#selector(concern(_:)), name: SMLocationManagerMonitorRegionsDidFailWithErrorNotification, object: nil);
-        nCenter.addObserver(self, selector:#selector(concern(_:)), name: SMLocationManagerAlwaysOnLocationServicesDisabled, object: nil);
+        nCenter.addObserver(self, selector:#selector(concern(_:)), name: NSNotification.Name(rawValue: disabledLocationServicesNotification), object: nil);
+        nCenter.addObserver(self, selector:#selector(concern(_:)), name: NSNotification.Name(rawValue: regionMonitoringFailureNotification), object: nil);
+        nCenter.addObserver(self, selector:#selector(concern(_:)), name: NSNotification.Name(rawValue: disabledAlwaysOnLocationServicesNotification), object: nil);
 
         // Success
-        nCenter.addObserver(self, selector:#selector(locationChanged(_:)), name: SMLocationManagerUpdateNotification, object: nil);
-        nCenter.addObserver(self, selector:#selector(newGeoLocations(_:)), name: SMLocationManagerDidUpdateGeoLocations, object: nil);
-        nCenter.addObserver(self, selector:#selector(didTriggerLocation(_:)), name: SMLocationManagerDidTriggerLocation, object: nil);
+        nCenter.addObserver(self, selector:#selector(locationChanged(_:)), name: NSNotification.Name(rawValue: locationUpdateNotification), object: nil);
+        nCenter.addObserver(self, selector:#selector(newGeoLocations(_:)), name: NSNotification.Name(rawValue: updatedLocationEventsNotification), object: nil);
+        nCenter.addObserver(self, selector:#selector(didTriggerLocation(_:)), name: NSNotification.Name(rawValue: triggeredLocationEventNotification), object: nil);
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         refreshUI();
     }
 
-    @IBAction func activeToggle(sender: UIButton) {
+    @IBAction func activeToggle(_ sender: UIButton) {
         if (locationManager.isGeofenceServiceStarted) {
             locationManager.stopGeofenceService();
         } else {
@@ -67,7 +67,7 @@ class GeoLocationViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func refreshUI() {
-        activeToggleButton.setTitle(locationManager.isGeofenceServiceStarted ? "Stop Geo Location" : "Start Geo Location", forState: .Normal);
+        activeToggleButton.setTitle(locationManager.isGeofenceServiceStarted ? "Stop Geo Location" : "Start Geo Location", for: UIControlState());
         if (!locationManager.isGeofenceServiceStarted) {
             clLocations = [];
             clRegions = [];
@@ -78,31 +78,31 @@ class GeoLocationViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
 
-    func updateGeo(evt : String, lat : Float, lng : Float, radius : Int) {
+    func updateGeo(_ evt : String, lat : Float, lng : Float, radius : Int) {
         event.text = evt;
         geoRadius.text = radius != 0 ? "\(radius)" : "";
         geoCoordinates.text = ((lat != 0.0) || (lng != 0.0)) ? "Coords: \(lat), \(lng)" : "Not Available";
     }
 
-    func updateLocation(lat : Double, lng : Double) {
+    func updateLocation(_ lat : Double, lng : Double) {
         locationCoordinates.text = ((lat != 0.0) || (lng != 0.0)) ? "Coords: \(lat), \(lng)" : "Not Available";
     }
 
-    func locationChanged(notification : NSNotification) {
+    func locationChanged(_ notification : Notification) {
         if let location = locationManager.currentGeoLocation {
             updateLocation(location.coordinate.latitude, lng: location.coordinate.longitude);
         }
         refreshUI();
     }
 
-    func concern(notification: NSNotification) {
+    func concern(_ notification: Notification) {
         refreshUI();
     }
 
-    func newGeoLocations(notification: NSNotification) {
+    func newGeoLocations(_ notification: Notification) {
         if let userInfo = notification.userInfo {
-            clRegions = userInfo[kSMLocationManagerRegionsKey] as! [CLCircularRegion];
-            clLocations = userInfo[kSMLocationManagerLocationsKey] as! [SMLocationEvent];
+            clRegions = userInfo[kMonitoredRegions] as! [CLCircularRegion];
+            clLocations = userInfo[kLocationEvents] as! [SMLocationEvent];
         } else {
             clRegions = [];
             clLocations = [];
@@ -111,17 +111,17 @@ class GeoLocationViewController: UIViewController, UITableViewDataSource, UITabl
         refreshUI();
     }
 
-    func didTriggerLocation(notification: NSNotification) {
+    func didTriggerLocation(_ notification: Notification) {
         if let userInfo = notification.userInfo as! [String : AnyObject]? {
             if let e = userInfo["event"] as! String? {
                 if let location = userInfo["location"] {
-                    if let lat = location["latitude"] as! NSNumber?, lng = location["longitude"] as! NSNumber? {
+                    if let lat = location["latitude"] as! NSNumber?, let lng = location["longitude"] as! NSNumber? {
                         updateLocation(lat.doubleValue, lng: lng.doubleValue);
                     }
                 }
                 if let fence = userInfo["geofence"] {
-                    if let lat = fence["latitude"] as! NSNumber?, lng = fence["longitude"] as! NSNumber?, radius = fence["radius"] as! NSNumber? {
-                        updateGeo(e, lat: lat.floatValue, lng: lng.floatValue, radius: radius.integerValue);
+                    if let lat = fence["latitude"] as! NSNumber?, let lng = fence["longitude"] as! NSNumber?, let radius = fence["radius"] as! NSNumber? {
+                        updateGeo(e, lat: lat.floatValue, lng: lng.floatValue, radius: radius.intValue);
                     }
                 }
             }
@@ -131,26 +131,26 @@ class GeoLocationViewController: UIViewController, UITableViewDataSource, UITabl
 
     // MARK: - Table view data source
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clLocations.count;
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         var location : SMLocationEvent?;
         let region = clRegions[indexPath.row];
-        let pieces = region.identifier.characters.split("-").map(String.init);
+        let pieces = region.identifier.characters.split(separator: "-").map(String.init);
         if (pieces.count > 1) {
             if let index = Int(pieces[1]) {
                 location = clLocations[index];
             }
         }
 
-        let cell = tableView.dequeueReusableCellWithIdentifier("Location Cell", forIndexPath: indexPath) as! LocationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Location Cell", for: indexPath) as! LocationCell
 
         if let local = location {
             cell.event.text = "Event: \(local.eventName)";

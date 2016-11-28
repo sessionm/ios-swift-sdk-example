@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class AchievementViewController: UIViewController {
+open class AchievementViewController: UIViewController {
 
     @IBOutlet weak var achievementIcon: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
@@ -18,11 +18,11 @@ public class AchievementViewController: UIViewController {
     var _achievement : SMAchievementData?;
     var _achievementActivity : SMAchievementActivity?;
 
-    public var achievement : SMAchievementData? {
+    open var achievement : SMAchievementData? {
         set {
             _achievement = newValue;
             if let achieveData = _achievement {
-                _achievementActivity = SMAchievementActivity(achievementData: achieveData);
+                _achievementActivity = SMAchievementActivity(data: achieveData);
                 if let achieve = _achievementActivity {
                     achieve.notifyPresented();
                 }
@@ -32,7 +32,7 @@ public class AchievementViewController: UIViewController {
         get { return nil; }
     };
 
-    func showAchieve(achievement : SMAchievementData) {
+    func showAchieve(_ achievement : SMAchievementData) {
         messageLabel.text = achievement.message;
         nameLabel.text = achievement.name;
         pointsLabel.text = "\(achievement.pointValue)";
@@ -46,28 +46,28 @@ public class AchievementViewController: UIViewController {
         }
     }
 
-    @IBAction func onClaim(sender: UIButton) {
-        self.presentingViewController!.dismissViewControllerAnimated(true, completion: {
+    @IBAction func onClaim(_ sender: UIButton) {
+        self.presentingViewController!.dismiss(animated: true, completion: {
             if let achieve = self._achievementActivity {
-                achieve.notifyDismissed(.Claimed);
+                achieve.notifyDismissed(dismissType: .claimed);
             }
         });
     }
 
-    @IBAction func onCancel(sender: UIButton) {
+    @IBAction func onCancel(_ sender: UIButton) {
         if let achieve = _achievementActivity {
-            achieve.notifyDismissed(.Canceled);
+            achieve.notifyDismissed(dismissType: .canceled);
         }
-        [self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)];
+        self.presentingViewController?.dismiss(animated: true, completion: nil);
     }
 
     // Not optimal, but gets URL load off UI Thread
-    func loadFromUrl(url : String, callback : (UIImage? -> Void)) {
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-        dispatch_async(queue) {
-            if let imageData = NSData(contentsOfURL: NSURL(string: url)!) {
+    func loadFromUrl(_ url : String, callback : @escaping ((UIImage?) -> Void)) {
+        let queue = DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated);
+        queue.async {
+            if let imageData = try? Data(contentsOf: URL(string: url)!) {
                 let image = UIImage(data: imageData);
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     callback(image);
                 });
             }

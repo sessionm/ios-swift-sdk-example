@@ -12,26 +12,26 @@ class DemoLoaderController: SMLoaderController {
     @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
 
-    @IBAction func dismiss(sender: UIButton) {
+    @IBAction func dismiss(_ sender: UIButton) {
         dismissPortal();
     }
-    @IBAction func retry(sender: UIButton) {
+    @IBAction func retry(_ sender: UIButton) {
         reloadPortalContent();
     }
 
-    override func updateViewForLoadStatus(status: SMLoaderControllerLoadStatus) {
+    override func updateView(for status: SMLoaderControllerLoadStatus) {
         var message : String;
         switch (status) {
-        case .Loading:
-            retryButton.hidden = true;
+        case .loading:
+            retryButton.isHidden = true;
             message = "Loading...";
             break;
-        case .Failed:
-            retryButton.hidden = false;
+        case .failed:
+            retryButton.isHidden = false;
             message = "Could not load content.";
             break;
-        case .Unavailable:
-            retryButton.hidden = true;
+        case .unavailable:
+            retryButton.isHidden = true;
             message = "Network is offline.";
             break;
         }

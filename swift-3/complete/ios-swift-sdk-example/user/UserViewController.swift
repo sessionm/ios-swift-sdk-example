@@ -42,11 +42,11 @@ class UserViewController: UIViewController, SessionMDelegate {
         self.view.addGestureRecognizer(tap);
     }
 
-    func tap(tap : UITapGestureRecognizer) {
+    func tap(_ tap : UITapGestureRecognizer) {
         self.view.endEditing(true);
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
 
         sessionM.delegate = self;
@@ -56,32 +56,32 @@ class UserViewController: UIViewController, SessionMDelegate {
     }
 
     func signupUI() {
-        loginButton.hidden = true;
-        logoutButton.hidden = true;
-        signupButton.hidden = true;
-        toggleSegment.hidden = true;
-        optInOutButton.hidden = true;
-        logMessage.hidden = true;
+        loginButton.isHidden = true;
+        logoutButton.isHidden = true;
+        signupButton.isHidden = true;
+        toggleSegment.isHidden = true;
+        optInOutButton.isHidden = true;
+        logMessage.isHidden = true;
 
-        emailText.hidden = true; passwordText.hidden = true; confirmPasswordText.hidden = true; yearOfBirthText.hidden = true; zipcodeText.hidden = true; genderFieldView.hidden = true;
+        emailText.isHidden = true; passwordText.isHidden = true; confirmPasswordText.isHidden = true; yearOfBirthText.isHidden = true; zipcodeText.isHidden = true; genderFieldView.isHidden = true;
 
-        if (sessionM.sessionState == .Stopped) {
+        if (sessionM.sessionState == .stopped) {
         } else if (sessionM.user.isRegistered) {
-            logoutButton.hidden = false;
-            logoutButton.enabled = true;
-            logMessage.hidden = false;
-            optInOutButton.hidden = false;
-            optInOutButton.setTitle(sessionM.user.isOptedOut ? "Opt In" : "Opt Out", forState: .Normal);
+            logoutButton.isHidden = false;
+            logoutButton.isEnabled = true;
+            logMessage.isHidden = false;
+            optInOutButton.isHidden = false;
+            optInOutButton.setTitle(sessionM.user.isOptedOut ? "Opt In" : "Opt Out", for: UIControlState());
         } else {
-            loginButton.enabled = true;
-            signupButton.enabled = true;
-            toggleSegment.hidden = false;
+            loginButton.isEnabled = true;
+            signupButton.isEnabled = true;
+            toggleSegment.isHidden = false;
             if (toggleSegment.selectedSegmentIndex == 1) {
-                emailText.hidden = false; passwordText.hidden = false; confirmPasswordText.hidden = false; yearOfBirthText.hidden = false; zipcodeText.hidden = false; genderFieldView.hidden = false;
-                signupButton.hidden = false;
+                emailText.isHidden = false; passwordText.isHidden = false; confirmPasswordText.isHidden = false; yearOfBirthText.isHidden = false; zipcodeText.isHidden = false; genderFieldView.isHidden = false;
+                signupButton.isHidden = false;
             } else {
-                emailText.hidden = false; passwordText.hidden = false;
-                loginButton.hidden = false;
+                emailText.isHidden = false; passwordText.isHidden = false;
+                loginButton.isHidden = false;
             }
         }
 
@@ -90,102 +90,102 @@ class UserViewController: UIViewController, SessionMDelegate {
         isOptInLabel.text = sessionM.user.isOptedOut ? "NO" : "YES";
 
         switch sessionM.sessionState {
-            case .Stopped:
+            case .stopped:
                 sessionStateLabel.text = "Stopped";
-            case .StartedOffline:
+            case .startedOffline:
                 sessionStateLabel.text = "Started Offline";
-            case .StartedOnline:
+            case .startedOnline:
                 sessionStateLabel.text = "Started Online";
         }
     }
 
     // Gender
 
-    func editGender(gndr : Bool) {
-        dummyGenderText.hidden = gndr;
-        genderSegment.hidden = !gndr;
-        genderOKButton.hidden = !gndr;
+    func editGender(_ gndr : Bool) {
+        dummyGenderText.isHidden = gndr;
+        genderSegment.isHidden = !gndr;
+        genderOKButton.isHidden = !gndr;
     }
 
-    @IBAction func genderDummyTouched(sender: UITextField, forEvent event: UIEvent) {
+    @IBAction func genderDummyTouched(_ sender: UITextField, forEvent event: UIEvent) {
         editGender(true);
     }
 
-    @IBAction func genderOK(sender: UIButton) {
-        dummyGenderText.text = genderSegment.titleForSegmentAtIndex(genderSegment.selectedSegmentIndex);
+    @IBAction func genderOK(_ sender: UIButton) {
+        dummyGenderText.text = genderSegment.titleForSegment(at: genderSegment.selectedSegmentIndex);
         editGender(false);
     }
     
     // Sign In / Sign Up
 
-    @IBAction func toggle(sender: UISegmentedControl) {
+    @IBAction func toggle(_ sender: UISegmentedControl) {
         signupUI();
     }
 
-    @IBAction func login(sender: UIButton) {
-        loginButton.enabled = false;
-        if let e = emailText.text, p = passwordText.text {
-            if (!sessionM.logInUserWithEmail(e, password: p)) {
+    @IBAction func login(_ sender: UIButton) {
+        loginButton.isEnabled = false;
+        if let e = emailText.text, let p = passwordText.text {
+            if (!sessionM.logInUser(withEmail: e, password: p)) {
                 UIAlertView(title: "Invalid Authentication", message: "Please enter a valid email and password", delegate: nil, cancelButtonTitle: "OK").show();
                 signupUI();
             }
         }
     }
-    @IBAction func signup(sender: UIButton) {
-        signupButton.enabled = false;
+    @IBAction func signup(_ sender: UIButton) {
+        signupButton.isEnabled = false;
         var signupData : [String : NSObject] = [:];
-        if let e = emailText.text, p1 = passwordText.text, p2 = confirmPasswordText.text {
+        if let e = emailText.text, let p1 = passwordText.text, let p2 = confirmPasswordText.text {
             if (e.isEmpty || p1.isEmpty || p2.isEmpty) {
                 let alert = UIAlertView(title: "Required Fields", message: "Email, Password, and Confirm Password are required.", delegate: nil, cancelButtonTitle: "OK");
                 alert.show();
             } else if ( p1 != p2 ) {
                 UIAlertView(title: "Password Mismatch", message: "Password and Confirmation don't match", delegate: nil, cancelButtonTitle: "OK").show();
             } else {
-                signupData = [ "email" : e, "password" : p1 ];
+                signupData = [ "email" : e as NSObject, "password" : p1 as NSObject ];
                 if let yob = yearOfBirthText.text {
-                    if (!yob.isEmpty) { signupData["birth_year"] = yob; }
+                    if (!yob.isEmpty) { signupData["birth_year"] = yob as NSObject?; }
                 }
                 if let gndr = genderSegment {
-                    if (gndr.selectedSegmentIndex > 0) { signupData["gender"] = gndr.titleForSegmentAtIndex(gndr.selectedSegmentIndex); }
+                    if (gndr.selectedSegmentIndex > 0) { signupData["gender"] = gndr.titleForSegment(at: gndr.selectedSegmentIndex) as NSObject?; }
                 }
                 if let zip = zipcodeText.text {
-                    if (!zip.isEmpty) { signupData["zip"] = zip; }
+                    if (!zip.isEmpty) { signupData["zip"] = zip as NSObject?; }
                 }
             }
-            if (!sessionM.signUpUserWithData(signupData)) {
+            if (!sessionM.signUpUser(withData: signupData)) {
                 signupUI();
             }
         }
     }
-    @IBAction func logout(sender: UIButton) {
-        logoutButton.enabled = false;
+    @IBAction func logout(_ sender: UIButton) {
+        logoutButton.isEnabled = false;
         sessionM.logOutUser();
     }
 
-    func sessionM(sessionM: SessionM, didFailWithError error: NSError) {
+    func sessionM(_ sessionM: SessionM, didFailWithError error: Error) {
 
-        let ac = UIAlertController(title: "Failure", message: error.localizedDescription, preferredStyle: .Alert);
-        self.presentViewController(ac, animated: true) {
+        let ac = UIAlertController(title: "Failure", message: error.localizedDescription, preferredStyle: .alert);
+        self.present(ac, animated: true) {
             self.signupUI();
         };
     }
 
-    func sessionM(sessionM: SessionM, didUpdateUserRegistrationResult result: SMUserRegistrationResultType, errors: [String : NSObject]?) {
+    func sessionM(_ sessionM: SessionM, didUpdateUserRegistrationResult result: SMUserRegistrationResultType, errors: [String : NSObject]?) {
         var msg : [String] = [];
         if let errs = errors {
             for (key, valArray) in errs {
                 msg.append("\(key) => \(valArray)");
             }
-            UIAlertView(title: "Error(s) from Server", message: msg.joinWithSeparator("\n"), delegate: nil, cancelButtonTitle: "OK").show();
+            UIAlertView(title: "Error(s) from Server", message: msg.joined(separator: "\n"), delegate: nil, cancelButtonTitle: "OK").show();
         }
         self.signupUI();
     }
 
-    func sessionM(sessionM: SessionM, didUpdateUser user: SMUser) {
+    func sessionM(_ sessionM: SessionM, didUpdateUser user: SMUser) {
         signupUI();
     }
 
-    @IBAction func optInOut(sender: UIButton) {
+    @IBAction func optInOut(_ sender: UIButton) {
         sessionM.user.isOptedOut = !sessionM.user.isOptedOut;
     }
 

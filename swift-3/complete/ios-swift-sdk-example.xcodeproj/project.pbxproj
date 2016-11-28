@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6B14C8451D7886A80041E70D /* DemoLoaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B14C8441D7886A80041E70D /* DemoLoaderController.swift */; };
-		6B574AFD1D7482A600E8A687 /* SessionMFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 081720B636AB41CA85CEDD69 /* SessionMFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B597CBF1D7F5B4B00C7F927 /* GeoLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B597CBD1D7F5B0D00C7F927 /* GeoLocationViewController.swift */; };
 		6B7697B31D6E30640044DAAF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7697B21D6E30640044DAAF /* TabBarViewController.swift */; };
 		6B9B1B8D1D6CC63400D0208D /* AchievementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B1B841D6CC63400D0208D /* AchievementsTableViewCell.swift */; };
@@ -16,6 +15,8 @@
 		6B9B1B8F1D6CC63400D0208D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B1B871D6CC63400D0208D /* UserViewController.swift */; };
 		6B9B1B901D6CC63400D0208D /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B1B891D6CC63400D0208D /* DemoViewController.swift */; };
 		6B9B1B931D6CCAE000D0208D /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B1B921D6CCAE000D0208D /* AchievementViewController.swift */; };
+		6BB53E111DEC8335003971E8 /* SessionMFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB53E101DEC8335003971E8 /* SessionMFramework.framework */; };
+		6BB53E121DEC8335003971E8 /* SessionMFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB53E101DEC8335003971E8 /* SessionMFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6BFDED6C1D5A603A0054C069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFDED6B1D5A603A0054C069 /* AppDelegate.swift */; };
 		6BFDED731D5A603A0054C069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BFDED711D5A603A0054C069 /* Main.storyboard */; };
 		6BFDED751D5A603A0054C069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BFDED741D5A603A0054C069 /* Assets.xcassets */; };
@@ -23,13 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		940C19D24BBE4D678B27E368 /* Embed Frameworks */ = {
+		6BB53E131DEC8335003971E8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6B574AFD1D7482A600E8A687 /* SessionMFramework.framework in Embed Frameworks */,
+				6BB53E121DEC8335003971E8 /* SessionMFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,7 +38,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		081720B636AB41CA85CEDD69 /* SessionMFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SessionMFramework.framework; sourceTree = SOURCE_ROOT; };
 		6B14C8441D7886A80041E70D /* DemoLoaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoLoaderController.swift; sourceTree = "<group>"; };
 		6B597CBD1D7F5B0D00C7F927 /* GeoLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeoLocationViewController.swift; path = geolocation/GeoLocationViewController.swift; sourceTree = "<group>"; };
 		6B6E2C8B1D5B4FAE00B09F11 /* sdk_ios_sample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sdk_ios_sample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -47,6 +47,7 @@
 		6B9B1B871D6CC63400D0208D /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		6B9B1B891D6CC63400D0208D /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		6B9B1B921D6CCAE000D0208D /* AchievementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
+		6BB53E101DEC8335003971E8 /* SessionMFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SessionMFramework.framework; sourceTree = "<group>"; };
 		6BFDED681D5A60390054C069 /* ios-swift-sdk-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-swift-sdk-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BFDED6B1D5A603A0054C069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BFDED721D5A603A0054C069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BB53E111DEC8335003971E8 /* SessionMFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,9 +122,9 @@
 		6BFDED5F1D5A60390054C069 = {
 			isa = PBXGroup;
 			children = (
+				6BB53E101DEC8335003971E8 /* SessionMFramework.framework */,
 				6BFDED6A1D5A603A0054C069 /* ios-swift-sdk-example */,
 				6BFDED691D5A60390054C069 /* Products */,
-				081720B636AB41CA85CEDD69 /* SessionMFramework.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,8 +164,8 @@
 				6BFDED641D5A60390054C069 /* Sources */,
 				6BFDED651D5A60390054C069 /* Frameworks */,
 				6BFDED661D5A60390054C069 /* Resources */,
-				940C19D24BBE4D678B27E368 /* Embed Frameworks */,
 				2C1EFB6ACB1648A3AF6A17B8 /* Remove Unused Framework Slices */,
+				6BB53E131DEC8335003971E8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,12 +183,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "SessionM";
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = SessionM;
 				TargetAttributes = {
 					6BFDED671D5A60390054C069 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -291,8 +293,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -337,8 +341,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -357,6 +363,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -367,14 +374,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "ios-swift-sdk-example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sessionm.ios-swift-sdk-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-swift-sdk-example/sdk_ios_sample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -383,13 +393,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "ios-swift-sdk-example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sessionm.ios-swift-sdk-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-swift-sdk-example/sdk_ios_sample-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

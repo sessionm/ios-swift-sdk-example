@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class DemoViewController : UIViewController, UITextFieldDelegate, SessionMDelegate {
+open class DemoViewController : UIViewController, UITextFieldDelegate, SessionMDelegate {
 
     let ApiKey = "af114e255e773ac37b54c3c5bbc6b3b519c25717";
 
@@ -25,33 +25,33 @@ public class DemoViewController : UIViewController, UITextFieldDelegate, Session
     @IBOutlet weak var sessionStateLabel: UILabel!
     @IBOutlet weak var sessionButton: UIButton!
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad();
 
         // Setup the Portal Buttons (Code and Storyboard)
         
         let image = UIImage(named: "portalButton");
 
-        storyboardPortalButton.badgePosition = .Left;
-        storyboardPortalButton.button.setImage(image, forState: .Normal);
+        storyboardPortalButton.badgePosition = .left;
+        storyboardPortalButton.button.setImage(image, for: UIControlState());
 
-        if let portal = SMPortalButton(type: .Custom) {
-            portal.frame = CGRectMake(0, 0, codePortalButtonHolder.frame.size.width, codePortalButtonHolder.frame.size.height);
+        if let portal = SMPortalButton(type: .custom) {
+            portal.frame = CGRect(x: 0, y: 0, width: codePortalButtonHolder.frame.size.width, height: codePortalButtonHolder.frame.size.height);
             codePortalButtonHolder.addSubview(portal);
-            portal.button.setImage(image, forState: .Normal);
+            portal.button.setImage(image, for: UIControlState());
         }
 
     }
 
-    public override func viewDidAppear(animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
 
         updateUser(nil);
 
         // Listeners for User and Session State changes.
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateUser(_:)), name: SMSessionMDidUpdateUserInfoNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(stateChange(_:)), name: SMSessionMDidTransitionToStateNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUser(_:)), name: NSNotification.Name(rawValue: updatedUserInfoNotification), object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(stateChange(_:)), name: NSNotification.Name(rawValue: sessionStateTransitionNotification), object: nil);
 
         // SessionM SessionListener (SessionMDelegate) delegate.  Using these func in this class
         // public func sessionM(sessionM: SessionM, didFailWithError error: NSError)
@@ -60,52 +60,52 @@ public class DemoViewController : UIViewController, UITextFieldDelegate, Session
         sessionM.delegate = self;
 
         // Do nothing if Session started and user is active (isRegistered)
-        if ((sessionM.sessionState == .StartedOnline) || (sessionM.sessionState == .StartedOffline) && (sessionM.user.isRegistered)) {
+        if ((sessionM.sessionState == .startedOnline) || (sessionM.sessionState == .startedOffline) && (sessionM.user.isRegistered)) {
             return;
         }
 
         // Show alert to give status as it starts
         let weakSelf = self;
-        alertController = UIAlertController(title: "Starting", message: "Preparing Session, please wait", preferredStyle: .Alert);
+        alertController = UIAlertController(title: "Starting", message: "Preparing Session, please wait", preferredStyle: .alert);
         if let alert = alertController {
-            alert.addTextFieldWithConfigurationHandler({ (field : UITextField) in
+            alert.addTextField(configurationHandler: { (field : UITextField) in
                 field.delegate = weakSelf;
                 field.text = "Stopped";
             });
         }
-        self.presentViewController(alertController!, animated: true) {}
+        self.present(alertController!, animated: true) {}
 
         // If it's not Started, then start the session (Will remember the last user).
-        if ((sessionM.sessionState == .StartedOffline) || (sessionM.sessionState == .StartedOffline)) {
+        if ((sessionM.sessionState == .startedOffline) || (sessionM.sessionState == .startedOffline)) {
         } else {
             startSession(sessionM);
         }
     }
 
-    override public func viewWillDisappear(animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: SMSessionMDidUpdateUserInfoNotification, object: nil);
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: SMSessionMDidTransitionToStateNotification, object: nil);
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: updatedUserInfoNotification), object: nil);
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: sessionStateTransitionNotification), object: nil);
     }
 
-    public func textFieldShouldBeginEditing(textField: UITextField) -> Bool { return false; }
+    open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool { return false; }
 
     // 
     // MARK: - Achievement triggering (sending events)
     //
 
-    @IBAction func customAchievement(sender: UIButton) {
+    @IBAction func customAchievement(_ sender: UIButton) {
         sessionM.logAction("custom_achieve");
     }
 
-    @IBAction func earnAchievement(sender: UIButton) {
+    @IBAction func earnAchievement(_ sender: UIButton) {
         sessionM.logAction("always_achieve");
     }
 
-    @IBAction func customSwitch(toggle : UISwitch) {
-        if (toggle.on) {
+    @IBAction func customSwitch(_ toggle : UISwitch) {
+        if (toggle.isOn) {
             if let sb = storyboard {
-                if let controller = sb.instantiateViewControllerWithIdentifier("Demo Loader") as? DemoLoaderController {
+                if let controller = sb.instantiateViewController(withIdentifier: "Demo Loader") as? DemoLoaderController {
                     if #available(iOS 9.0, *) {
                         controller.loadViewIfNeeded()
                     } else {
@@ -119,24 +119,24 @@ public class DemoViewController : UIViewController, UITextFieldDelegate, Session
         }
     }
 
-    @IBAction func notificationsToggle(sender: UISwitch) {
+    @IBAction func notificationsToggle(_ sender: UISwitch) {
     }
 
-    @IBAction func sessionButton(sender: UIButton) {
-        sessionM.startSessionWithAppID(ApiKey);
+    @IBAction func sessionButton(_ sender: UIButton) {
+        sessionM.startSession(appID: ApiKey);
     }
 
     //
     // MARK: - SessionM delegate (SessionMDelegate) methods
     //
 
-    public func sessionM(sessionM: SessionM, didFailWithError error: NSError) {
+    open func sessionM(_ sessionM: SessionM, didFailWithError error: Error) {
         UIAlertView(title: "SessionM Issue", message: error.localizedDescription, delegate: self, cancelButtonTitle: "DONE").show();
         if let alert = alertController {
             let textField = alert.textFields![0] as UITextField;
             textField.text = "\(error.localizedDescription)";
 
-            alert.dismissViewControllerAnimated(true, completion: nil);
+            alert.dismiss(animated: true, completion: nil);
             alertController = nil;
         }
         sessionM.logOutUser();
@@ -146,7 +146,7 @@ public class DemoViewController : UIViewController, UITextFieldDelegate, Session
     // You've earned an achievement, should it show the popup for achievement
     // Consider Custom Achievement
 
-    public func sessionM(sessionM: SessionM, shouldAutopresentAchievement achievement: SMAchievementData) -> Bool {
+    open func sessionM(_ sessionM: SessionM, shouldAutopresentAchievement achievement: SMAchievementData) -> Bool {
 
         if (achievement.isCustom) {
             presentCustom(achievement);
@@ -156,64 +156,64 @@ public class DemoViewController : UIViewController, UITextFieldDelegate, Session
 
     // Called when Session transitions between States (From Notification SMSessionMDidTransitionToStateNotification)
 
-    func stateChange(sender : NSNotification) {
+    func stateChange(_ sender : Notification) {
         showStartupState(sessionM, state: sessionM.sessionState);
     }
 
     // Show the user's current status (From Notification SMSessionMDidUpdateUserInfoNotification)
 
-    func updateUser(sender : NSNotification?) {
+    func updateUser(_ sender : Notification?) {
 
         let user = sessionM.user;
 
         if (sessionM.user.isRegistered) {
             if let alert = alertController {
-                alert.dismissViewControllerAnimated(true, completion: nil);
+                alert.dismiss(animated: true, completion: nil);
                 alertController = nil;
             }
         }
 
         isSignedInLabel.text = user.isLoggedIn ? "Yes" : "No";
         isRegisteredLabel.text = user.isRegistered ? "Yes" : "No";
-        customAchievementButton.enabled = sessionM.sessionState != .Stopped;
-        earnAchievementButton.enabled = sessionM.sessionState != .Stopped;
+        customAchievementButton.isEnabled = sessionM.sessionState != .stopped;
+        earnAchievementButton.isEnabled = sessionM.sessionState != .stopped;
 
         showState(sessionM, state: sessionM.sessionState);
     }
 
     // MARK: - Support funcs
 
-    func presentCustom(achievement : SMAchievementData) {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CustomAchievement") as! AchievementViewController;
-        self.presentViewController(vc, animated: true, completion: nil);
+    func presentCustom(_ achievement : SMAchievementData) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomAchievement") as! AchievementViewController;
+        self.present(vc, animated: true, completion: nil);
         vc.achievement = achievement;
     }
 
-    func showState(sessionM : SessionM, state : SessionMState) {
+    func showState(_ sessionM : SessionM, state : SessionMState) {
         switch state {
-        case .Stopped:
+        case .stopped:
             sessionStateLabel.text = "Stopped";
-            sessionButton.hidden = false;
-            sessionButton.setTitle("Start Session", forState: .Normal) ;
-        case .StartedOffline:
+            sessionButton.isHidden = false;
+            sessionButton.setTitle("Start Session", for: UIControlState()) ;
+        case .startedOffline:
             sessionStateLabel.text = "Started Offline";
-            sessionButton.hidden = true;
-        case .StartedOnline:
+            sessionButton.isHidden = true;
+        case .startedOnline:
             sessionStateLabel.text = "Started Online";
-            sessionButton.hidden = true;
+            sessionButton.isHidden = true;
         }
         sessionButton.sizeToFit();
     }
 
-    func showStartupState(sessionM : SessionM, state : SessionMState) {
+    func showStartupState(_ sessionM : SessionM, state : SessionMState) {
         if let alert = alertController {
             let textField = alert.textFields![0] as UITextField;
             switch state {
-            case .StartedOffline:
+            case .startedOffline:
                 textField.text = "Started, Offline";
-            case .StartedOnline:
+            case .startedOnline:
                 textField.text = "Started, Online";
-                alert.dismissViewControllerAnimated(true, completion: nil);
+                alert.dismiss(animated: true, completion: nil);
                 alertController = nil;
             default:
                 textField.text = "Session Stoppped";
@@ -221,9 +221,9 @@ public class DemoViewController : UIViewController, UITextFieldDelegate, Session
         }
     }
 
-    func startSession(sessionM : SessionM) {
+    func startSession(_ sessionM : SessionM) {
         sessionM.shouldAutoUpdateAchievementsList = true;
-        sessionM.startSessionWithAppID(ApiKey);
+        sessionM.startSession(appID: ApiKey);
         if let alert = alertController {
             let textField = alert.textFields![0] as UITextField;
             textField.text = "Starting";
